@@ -1,14 +1,12 @@
-
 import './App.css';
-import Inbox from './pages/Inbox'
-import Sendbox from './pages/Sendbox'
+// import Inbox from './pages/Inbox'
 import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
-      <Inbox></Inbox>
+      {/* <Inbox></Inbox> */}
     </div>
   );
 }

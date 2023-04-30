@@ -39,3 +39,10 @@ nav {
 .nav-link {
     color: var(--color-text) !important;
 }
+
+@media (min-width: 992px) {
+    .nav-rigth {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
