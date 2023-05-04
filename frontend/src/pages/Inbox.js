@@ -14,12 +14,11 @@ const Inbox = () => {
         setMails(data)
     }
   return (      
-    <ol classname="list-group list-group-numbered">
-      
+    <div>
       {mails.map((mail) => (
           <InboxItem key={mail.index} mail={mail} />
         ))}
-    </ol>
+    </div>
   )
 }
 

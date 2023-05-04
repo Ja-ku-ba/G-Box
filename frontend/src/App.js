@@ -13,11 +13,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" exact Component={Inbox}></Route>
-        <Route path="/mail/<str:subject>/<str:date>" Component={Mail}></Route>
-      </Routes>
+        <Navbar />
+        <Routes>
+          <Route path="/" exact Component={Inbox}></Route>
+          <Route path="/mail/<str:subject>/<str:date>" Component={Mail}></Route>
+        </Routes>
       </div>
     </Router>
   );
