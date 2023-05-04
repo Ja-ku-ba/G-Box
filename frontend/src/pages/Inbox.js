@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
+import InboxItem from '../components/InboxItem'
+
 const Inbox = () => {
     let [mails, setMails] = useState([])
     useEffect(() => {
@@ -11,11 +13,13 @@ const Inbox = () => {
         let data = await response.json()
         setMails(data)
     }
-    console.log(mails)
-  return (
-    <div>
-    <h2>okej</h2>
-    </div>
+  return (      
+    <ol classname="list-group list-group-numbered">
+      
+      {mails.map((mail) => (
+          <InboxItem key={mail.index} mail={mail} />
+        ))}
+    </ol>
   )
 }
 
