@@ -7,7 +7,7 @@ const Inbox = () => {
     }, [])
 
     let getMails = async () => {
-        let response = await fetch("inbox/all/")
+        let response = await fetch('/api/inbox/All')
         let data = await response.json()
         setMails(data)
     }
