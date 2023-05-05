@@ -9,6 +9,9 @@ const InboxList = ({mail}) => {
     }
     return subject.match(/([a-z0-9_\.\-])+\@(([a-z0-9\-])+\.)+([a-z0-9]{2,4})+/i)[0]
   }
+  let getTime = (date) => {
+    return new Date(date.updated).toLocaleDateString()
+  }
 
   return (
     <ol className="list-group list-group-numbered">
@@ -17,7 +20,7 @@ const InboxList = ({mail}) => {
               <div className="ms-2 me-auto">
                 <div className="fw-bold">{getFrom(mail.from)}</div>
               </div>
-              <span className="badge bg-primary rounded-pill">{mail.date}</span>
+              <span className="badge bg-primary rounded-pill">{typeof mail.date}</span>
           </li>
       </Link>
     </ol>

@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Navbar = () => {
+
+  const [date, setDate] = useState(new Date());
+  
+  useEffect(() => {
+    let timer = setInterval(() => {
+      let time = new Date()
+      setDate(`${time.getHours()}:${time.getMinutes()}, ${time.getDay()}.${time.getMonth()}.${time.getFullYear()}`);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand nav-link" href="#">12:45, 12.06.2023</a>
+          <a className="navbar-brand nav-link" href="#">{date.toString()}</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
           </button>
@@ -26,31 +38,3 @@ const Navbar = () => {
 export default Navbar
 
 
-// import React from 'react'
-
-// const Navbar = () => {
-//   return (
-//     <nav className="navbar navbar-expand-lg">
-//         <div className="container-fluid">
-//           <a className="navbar-brand nav-link" href="#">12:45, 12.06.2023</a>
-//           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-//           <span className="navbar-toggler-icon"></span>
-//           </button>
-//           <div>
-//             <div className="collapse navbar-collapse" id="navbarNav">
-//               <ul className="navbar-nav">
-//                   <li className="nav-item">
-//                     <a className="nav-link" aria-current="page" href="#">username@gmail.com</a>
-//                   </li>
-//                   <li className="nav-item">
-//                     <a className="nav-link" href="#">wyloguj</a>
-//                   </li>
-//               </ul>
-//             </div>
-//           </div>
-//         </div>
-//     </nav>
-//   )
-// }
-
-// export default Navbar
