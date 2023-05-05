@@ -4,10 +4,11 @@ const Navbar = () => {
 
   const [date, setDate] = useState(new Date());
   
+  // later turn into seperate component
   useEffect(() => {
     let timer = setInterval(() => {
       let time = new Date()
-      setDate(`${time.getHours()}:${time.getMinutes()}, ${time.getDay()}.${time.getMonth()}.${time.getFullYear()}`);
+      setDate(`${time.getHours()}:${time.getMinutes()}, ${time.getDate()}.${time.getMonth()}.${time.getFullYear()}`);
     }, 1000);
 
     return () => clearInterval(timer);
