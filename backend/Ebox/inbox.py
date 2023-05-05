@@ -7,7 +7,7 @@ username = "szopowsky@gmail.com"
 
 password = os.environ["EMAIL_SENDER_PASSWORD"]
 
-def get_inbox(filter="ALL"):
+def get_inbox(filter):
     mail = imaplib.IMAP4_SSL(host)
     mail.login(username, password)
     mail.select("inbox")

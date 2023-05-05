@@ -8,4 +8,5 @@ import os
 @api_view(["GET"])
 def emails(request, filter):
     response = get_inbox(filter)
+    print(filter, '---------------')
     return Response(response)

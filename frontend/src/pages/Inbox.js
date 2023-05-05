@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 import InboxItem from '../components/InboxItem'
+import HelpBar from '../components/HelpBar'
 
 const Inbox = () => {
     let [mails, setMails] = useState([])
@@ -15,6 +16,7 @@ const Inbox = () => {
     }
   return (      
     <div>
+      <HelpBar />
       {mails.map((mail) => (
           <InboxItem key={mail.index} mail={mail} />
         ))}
