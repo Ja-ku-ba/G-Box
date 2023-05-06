@@ -7,7 +7,7 @@ const Filters = () => {
 
   let handleOnChange = (e) => {
     setFilter(e.target.value)
-    navigate(`/${e.target.value}`)
+    navigate(`/inbox/${e.target.value}`)
   }
 
   return (

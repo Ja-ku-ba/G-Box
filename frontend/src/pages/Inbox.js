@@ -1,19 +1,23 @@
 import React, {useState, useEffect} from 'react'
+import { useParams  } from "react-router-dom";
 
 import InboxItem from '../components/InboxItem'
 import HelpBar from '../components/HelpBar'
 
 const Inbox = () => {
-    let [mails, setMails] = useState([])
-    useEffect(() => {
-        getMails()
-    }, [])
+  let { filter } = useParams()
+  console.log(filter)
+  let [mails, setMails] = useState([])
+  useEffect(() => {
+      getMails()
+  }, [])
 
-    let getMails = async () => {
-        let response = await fetch('/api/inbox/All')
-        let data = await response.json()
-        setMails(data)
-    }
+  let getMails = async () => {
+      let response = await fetch('/api/inbox/SEEN')
+      let data = await response.json()
+      setMails(data)
+  }
+  console.log(filter)
   return (      
     <div>
       <HelpBar />

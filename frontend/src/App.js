@@ -15,7 +15,8 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" exact Component={Inbox}></Route>
+          {/* <Route path="/" exact Component={Login}></Route> */}
+          <Route path="/inbox/:filter" exact Component={Inbox}></Route>
           <Route path="/mail/<str:subject>/<str:date>" Component={Mail}></Route>
         </Routes>
       </div>
