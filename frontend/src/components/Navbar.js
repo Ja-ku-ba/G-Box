@@ -1,13 +1,15 @@
 import { React, useEffect, useState } from 'react'
 
-const Navbar = () => {
+import { Link } from 'react-router-dom';
 
-  const [date, setDate] = useState(new Date());
+const Navbar = () => {
+  let time = new Date()
+
+  const [date, setDate] = useState(`${time.getHours()}:${time.getMinutes()}, ${time.getDate()}.${time.getMonth()}.${time.getFullYear()}`);
   
   // later turn into seperate component
   useEffect(() => {
     let timer = setInterval(() => {
-      let time = new Date()
       setDate(`${time.getHours()}:${time.getMinutes()}, ${time.getDate()}.${time.getMonth()}.${time.getFullYear()}`);
     }, 1000);
 
@@ -23,6 +25,9 @@ const Navbar = () => {
           </button>
             <div className="collapse navbar-collapse nav-rigth" id="navbarNav">
               <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <Link to={'/send/'}>nowa wiadomosc</Link>
+                  </li>
                   <li className="nav-item">
                     <a className="nav-link" aria-current="page" href="#">username@gmail.com</a>
                   </li>

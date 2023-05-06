@@ -8,6 +8,7 @@ import './App.css';
 import Inbox from './pages/Inbox'
 import Navbar from './components/Navbar'
 import Mail from './pages/Mail'
+import Send from './pages/Send'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           {/* <Route path="/" exact Component={Login}></Route> */}
           <Route path="/inbox/:filter" exact Component={Inbox}></Route>
           <Route path="/mail/<str:subject>/<str:date>" Component={Mail}></Route>
+          <Route path="/send" exact Component={Send}></Route>
         </Routes>
       </div>
     </Router>

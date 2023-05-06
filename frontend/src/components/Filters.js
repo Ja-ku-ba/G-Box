@@ -8,6 +8,7 @@ const Filters = () => {
   let handleOnChange = (e) => {
     setFilter(e.target.value)
     navigate(`/inbox/${e.target.value}`)
+    window.location.reload();
   }
 
   return (
@@ -15,12 +16,9 @@ const Filters = () => {
       <option value="All">Wszystkie</option>
       <option value="ANSWERED">Odpowiedziane</option>
       <option value="DELETED">Usunięte</option>
-      <option value="DRAFT">Wersje robocze</option>
-      <option value="FLAGGED">Oflagowane</option>
-      <option value="NEW">Nowe</option>
-      <option value="OLD">Stare</option>
-      <option value="RECENT">Ostatnie</option>
+      <option value="RECENT">Stare</option>
       <option value="SEEN">Otworzone</option>
+      <option value="DRAFT">Nie otwarte</option>
     </select>
   )
 }

@@ -55,10 +55,6 @@ nav {
     color: white;
     border: none;
 }
-/* 
-.inbox-list-item {
-    textDecoration: 'none'
-} */
 
 @media (min-width: 768px) { 
     .inbox-list {
@@ -80,8 +76,49 @@ nav {
         font-size: 80%;
         border-bottom: 1px solid gray;
     }
-
-    /* .inbox-infos {
-        
-    } */
 }
+/* end inbox */
+
+
+/* Sendbox */
+.send {
+    background-color: #1f1f2e;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.send-element {
+    padding-bottom: 20px;
+}
+
+.recievers-label {
+    margin-top: 8px;
+}
+
+.send-element textarea {
+    height: 300px;
+}
+
+.send-element button {
+    background-color: #999;
+    color: white;
+    width: 30%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: -5px;
+}
+
+@media (min-width: 768px) { 
+    .send {
+        width: 60%;
+        margin: auto;
+    }
+}
+/* 
+@media (max-width: 768px) {
+} */

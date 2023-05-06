@@ -6,18 +6,16 @@ import HelpBar from '../components/HelpBar'
 
 const Inbox = () => {
   let { filter } = useParams()
-  console.log(filter)
   let [mails, setMails] = useState([])
   useEffect(() => {
       getMails()
   }, [])
 
   let getMails = async () => {
-      let response = await fetch('/api/inbox/SEEN')
+      let response = await fetch(`/api/inbox/${filter}`)
       let data = await response.json()
       setMails(data)
   }
-  console.log(filter)
   return (      
     <div>
       <HelpBar />
