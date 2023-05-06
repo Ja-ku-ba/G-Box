@@ -40,6 +40,12 @@ nav {
     color: var(--color-text) !important;
 }
 
+.clock {
+    text-decoration: none !important;
+    font-size: 130%;
+    color: var(--color-text) !important;
+}
+
 @media (min-width: 992px) {
     .nav-rigth {
         display: flex;

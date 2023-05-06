@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   let time = new Date()
+  function addZ(n){return n<10? '0'+n:''+n;}
 
-  const [date, setDate] = useState(`${time.getHours()}:${time.getMinutes()}, ${time.getDate()}.${time.getMonth()}.${time.getFullYear()}`);
+  const [date, setDate] = useState(`${addZ(time.getDate())}.${addZ(time.getMonth())}.${time.getFullYear()}, ${time.getHours()}:${time.getMinutes()}`);
   
   // later turn into seperate component
+  
   useEffect(() => {
     let timer = setInterval(() => {
-      setDate(`${time.getHours()}:${time.getMinutes()}, ${time.getDate()}.${time.getMonth()}.${time.getFullYear()}`);
+      setDate(`${addZ(time.getDate())}.${addZ(time.getMonth())}.${time.getFullYear()}, ${time.getHours()}:${time.getMinutes()}`);
     }, 1000);
 
     return () => clearInterval(timer);
@@ -19,7 +21,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand nav-link" href="#">{date.toString()}</a>
+          <Link to={'/inbox/ALL'} className='clock'>{date.toString()}</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
           </button>
