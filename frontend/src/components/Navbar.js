@@ -28,7 +28,7 @@ const Navbar = () => {
             <div className="collapse navbar-collapse nav-rigth" id="navbarNav">
               <ul className="navbar-nav">
                   <li className="nav-item">
-                    <Link to={'/send/'}>nowa wiadomosc</Link>
+                    <Link className="nav-link" to={'/send/'}>nowa wiadomosc</Link>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" aria-current="page" href="#">username@gmail.com</a>
