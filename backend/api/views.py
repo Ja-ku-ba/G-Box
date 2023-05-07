@@ -1,5 +1,7 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, parser_classes
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser
+from rest_framework import status
 
 from Ebox.inbox import get_inbox
 from Ebox.send import send_mail
@@ -12,9 +14,12 @@ def emails(request, filter):
     return Response(response)
 
 @api_view(["POST"])
-def send(request, data):
-    if data.html:
-        send = send_mail(to_emails=data.to_emails, subject=data.subject, html=data.html)
-    else:
-        send = send_mail(to_emails=data.to_emails, subject=data.subject, text=data.text)
-    return Response(send)
+@parser_classes([JSONParser])
+def send(request):
+    to_emails = [request.data.get("to_emails")]
+    subject = request.data.get("subject")
+    text = request.data.get("text")
+
+    send_mail(to_emails=to_emails, subject=subject, text=text)
+
+    return Response(status=status.HTTP_200_OK)

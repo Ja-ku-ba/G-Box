@@ -1,23 +1,32 @@
 import { React, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
 const Send = () => {
     let [sendTo, setSendTo] = useState('')
     let [subject, setSubject] = useState('')
     let [text, setText] = useState('')
+    let navigate = useNavigate()
 
     let sendMail = () => {
-        if (sendTo === '' || text === '') {
-            return window.alert("Musisz wprowadzić odbiorców, i treść wiadomości.")
+        if (sendTo === '' || text === '' || subject === '') {
+            return window.alert("Musisz wprowadzić odbiorców, temat i treść wiadomości.")
         }
+
+        let requestBody = {
+            to_emails: sendTo,
+            subject: subject,
+            text: text
+        }
+
         fetch(`/api/send/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            to_emails:JSON.stringify(sendTo),
-            subject:JSON.stringify(subject),
-            text:JSON.stringify(text),
+            body: JSON.stringify(requestBody)
         })
+        
+        navigate('/inbox/all')
     }
 
   return (

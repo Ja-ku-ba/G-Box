@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('inbox/<str:filter>', views.emails),
-    path('sendbox/', views.send),
+    path('send/', views.send),
 ]
