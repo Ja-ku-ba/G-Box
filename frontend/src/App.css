@@ -3,6 +3,7 @@
     --color-main: #16161d;
     --color-text: #f9f9f9;
     --color-dark: #070709;
+    --color-card: #1f1f2e;
     --color-gray: #677;
     --color-bg: #f3f6f9;
     --color-light: #acb4bd;
@@ -57,7 +58,7 @@ nav {
 /* inbox */
 
 .inbox-list-box {
-    background-color: #1f1f2e;
+    background-color: var(--color-card);
     color: white;
     border: none;
 }
@@ -88,7 +89,7 @@ nav {
 
 /* Sendbox */
 .send {
-    background-color: #1f1f2e;
+    background-color: var(--color-card);
     padding: 10px;
     border-radius: 0 0 10px 10px;
     display: flex;
@@ -128,3 +129,18 @@ nav {
 /* 
 @media (max-width: 768px) {
 } */
+/* end sendbox */
+
+/* login */
+.login-container {
+    background-color: var(--color-card);
+    color: white;
+    padding: 5px;
+}
+
+.card {
+    background-color: var(--color-card);
+    color: white;
+    width: 80%;
+    margin: 25px auto;
+}

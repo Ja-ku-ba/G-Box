@@ -5,11 +5,21 @@ from rest_framework import status
 
 from Ebox.inbox import get_inbox
 from Ebox.send import send_mail
+from Ebox.login import login
+
 import os
 
 # Create your views here.
+@api_view(["POST"])
+def login(request):
+    email = request.data.get("email")
+    code = request.data.get("code")
+    if login(email, password) == "HTTP_200_OK":
+        return Response(status=status.HTTP_200_OK)
+    return Response(status=status.HTTP_401_UNAUTHORIZED)
+
 @api_view(["GET"])
-def emails(request, filter):
+def emails(request):
     response = get_inbox(filter)
     return Response(response)
 
