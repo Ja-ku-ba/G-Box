@@ -1,12 +1,13 @@
 import imaplib
 import os
 
-host = 'imap.gmail.com'
+from rest_framework import status
 
 def login(email, password):
     mail = imaplib.IMAP4_SSL('imap.gmail.com')
     try:
-        mail.login(username, password)
-        return "HTTP_200_OK"
+        mail.login(email, password)
+        mail.logout()
+        return status.HTTP_200_OK
     except:
-        return "HTTP_401_UNAUTHORIZED"
+        return status.HTTP_401_UNAUTHORIZED

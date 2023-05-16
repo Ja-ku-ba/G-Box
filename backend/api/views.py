@@ -11,15 +11,14 @@ import os
 
 # Create your views here.
 @api_view(["POST"])
-def login(request):
+@parser_classes([JSONParser])
+def login_user(request):
     email = request.data.get("email")
     code = request.data.get("code")
-    if login(email, password) == "HTTP_200_OK":
-        return Response(status=status.HTTP_200_OK)
-    return Response(status=status.HTTP_401_UNAUTHORIZED)
+    return Response(status=login(email, code))
 
 @api_view(["GET"])
-def emails(request):
+def emails(request, filter):
     response = get_inbox(filter)
     return Response(response)
 
