@@ -3,6 +3,10 @@ from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 
+from django.contrib.auth.hashers import make_password, check_password
+
+from .models import User
+
 from Ebox.inbox import get_inbox
 from Ebox.send import send_mail
 from Ebox.login import login
@@ -15,7 +19,19 @@ import os
 def login_user(request):
     email = request.data.get("email")
     code = request.data.get("code")
-    return Response(status=login(email, code))
+    response = login(email, code)
+    if response == 200:
+        User.objects.create(
+            email=email, 
+            code=code
+        )
+    return Response(status=response)
+
+@api_view(["POST"])
+def logout(request):
+    user = User.objects.all()
+    user.delete()
+    return Response(status=status.HTTP_100_CONTINUE)
 
 @api_view(["GET"])
 def emails(request, filter):

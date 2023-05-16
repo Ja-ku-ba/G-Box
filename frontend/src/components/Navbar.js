@@ -18,6 +18,10 @@ const Navbar = () => {
     return () => clearInterval(timer);
   }, []);
 
+  let logout = async () => {
+      let response = await fetch('/api/logout/', {'method': 'POST'})
+  }
+
   return (
     <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
@@ -34,7 +38,7 @@ const Navbar = () => {
                     <a className="nav-link" aria-current="page" href="#">username@gmail.com</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">wyloguj</a>
+                    <Link className="nav-link" to={ "" } onClick={ logout }>Wyloguj</Link>
                   </li>
               </ul>
           </div>
