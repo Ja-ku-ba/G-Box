@@ -6,7 +6,7 @@ const Navbar = () => {
   let time = new Date()
   function addZ(n){return n<10? '0'+n:''+n;}
 
-  const [date, setDate] = useState(`${addZ(time.getDate())}.${addZ(time.getMonth())}.${time.getFullYear()}, ${time.getHours()}:${time.getMinutes()}`);
+  const [date, setDate] = useState(`${addZ(time.getDate())}.${addZ(time.getMonth())}.${time.getFullYear()}, ${addZ(time.getHours())}:${addZ(time.getMinutes())}`);
   
   // later turn into seperate component
   
