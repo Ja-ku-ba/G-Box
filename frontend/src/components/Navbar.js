@@ -1,8 +1,12 @@
-import { React, useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 
 import { Link } from 'react-router-dom';
 
+import { UserContext } from '../pages/Login';
+
 const Navbar = () => {
+  const user = useContext(UserContext);
+  console.log(user, 'Hakuna Matata!')
   let time = new Date()
   function addZ(n){return n<10? '0'+n:''+n;}
 
@@ -12,17 +16,18 @@ const Navbar = () => {
   
   useEffect(() => {
     let timer = setInterval(() => {
-      setDate(`${addZ(time.getDate())}.${addZ(time.getMonth())}.${time.getFullYear()}, ${time.getHours()}:${time.getMinutes()}`);
+      setDate(`${addZ(time.getDate())}.${addZ(time.getMonth())}.${time.getFullYear()}, ${addZ(time.getHours())}:${addZ(time.getMinutes())}`);
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
   let logout = async () => {
-      let response = await fetch('/api/logout/', {'method': 'POST'})
+      await fetch('/api/logout/', {'method': 'POST'})
   }
 
   return (
+      <UserContext.Provider value={user}>
     <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <Link to={'/inbox/ALL'} className='clock'>{date.toString()}</Link>
@@ -35,7 +40,7 @@ const Navbar = () => {
                     <Link className="nav-link" to={'/send/'}>nowa wiadomosc</Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="#">username@gmail.com</a>
+                    <a className="nav-link" aria-current="page" href="#">{ user }l</a>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to={ "" } onClick={ logout }>Wyloguj</Link>
@@ -44,6 +49,7 @@ const Navbar = () => {
           </div>
         </div>
     </nav>
+      </UserContext.Provider>
   )
 }
 
