@@ -7,4 +7,5 @@ urlpatterns = [
     path('logout/', views.logout),
     path('inbox/<str:filter>', views.emails),
     path('send/', views.send),
+    path('mail/', views.get_username),
 ]

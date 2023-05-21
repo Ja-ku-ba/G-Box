@@ -38,6 +38,11 @@ def emails(request, filter):
     response = get_inbox(filter)
     return Response(response)
 
+@api_view(["GET"])
+def get_username(request):
+    print(User.objects.order_by('-id')[0], '--------------')
+    return Response(User.objects.order_by('-id')[0])
+
 @api_view(["POST"])
 @parser_classes([JSONParser])
 def send(request):
