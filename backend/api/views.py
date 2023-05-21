@@ -40,9 +40,12 @@ def emails(request, filter):
 
 @api_view(["GET"])
 def get_username(request):
-    username = User.objects.order_by('-id')[0]
-    return Response(username.email)
-
+    try:
+        username = User.objects.order_by('-id')[0]
+        return Response(username.email, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_100_CONTINUE)
+    
 @api_view(["POST"])
 @parser_classes([JSONParser])
 def send(request):

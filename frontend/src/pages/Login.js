@@ -10,7 +10,7 @@ const Login = () => {
     let [password, setPassword] = useState([])
 
 
-    let display = async () => {
+    let verification = async () => {
         let response = await fetch('/api/login/', {
             method: "POST",
             headers: {
@@ -23,8 +23,8 @@ const Login = () => {
         })
         if (response.ok) {
             // Login successful, navigate to the inbox page
-            console.log("Weszło!", mail)
             navigate('/inbox/ALL');
+            window.location.reload();
         } else {
             // Login failed or unauthorized
             alert('Coś poszło nie tak');
@@ -58,7 +58,7 @@ const Login = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <button type='button' onClick={display} className="btn btn-primary">Zaloguj</button>
+                    <button type='button' onClick={verification} className="btn btn-primary">Zaloguj</button>
                 </div>
             </form>
     )

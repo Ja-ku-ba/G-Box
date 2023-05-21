@@ -15,20 +15,20 @@ const Navbar = () => {
     return () => clearInterval(timer);
   }, []);
 
-
-    let [mail, setMail] = useState([])
-    useEffect(() => {
-        getMail()
-    }, [getMail])
-    let getMail = async () => {
-        let response = await fetch("/api/mail/")
-        let user_mail = await response.json()
-        setMail(user_mail)
-    }
-
   let logout = async () => {
       await fetch('/api/logout/', {method: 'POST'})
+      window.location.reload()
   }
+
+  let [mail, setMail] = useState()
+    useEffect(() => {
+        getMail();
+    })
+    let getMail = async () => {
+      let response = await fetch('/api/mail/')
+        let data = await response.json()
+        setMail(data)
+    }
 
   return (
     <nav className="navbar navbar-expand-lg">
