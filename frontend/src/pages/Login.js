@@ -1,8 +1,7 @@
-import React, { useState, createContext } from 'react'
+import React, { useState } from 'react'
 
 import { useNavigate } from "react-router-dom";
 
-const UserContext = createContext("example@mail.com");
 
 const Login = () => {
     let navigate = useNavigate()
@@ -10,7 +9,6 @@ const Login = () => {
     let [mail, setMail] = useState([])
     let [password, setPassword] = useState([])
 
-    const [user, setUser] = useState('example@example.com');
 
     let display = async () => {
         let response = await fetch('/api/login/', {
@@ -25,7 +23,6 @@ const Login = () => {
         })
         if (response.ok) {
             // Login successful, navigate to the inbox page
-            setUser(mail)
             console.log("Weszło!", mail)
             navigate('/inbox/ALL');
         } else {
@@ -68,4 +65,3 @@ const Login = () => {
 }
 
 export default Login
-export { UserContext };

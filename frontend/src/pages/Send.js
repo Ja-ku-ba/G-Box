@@ -54,7 +54,7 @@ const Send = () => {
             <input className="form-control" type="file" id="formFileMultiple" multiple></input>
         </div>
         <div className='send-element'>
-            <button type="submit" className="btn" onClick={sendMail}>Wyslij</button>
+            <button type="submit" className="btn" onChange={sendMail()}>Wyslij</button>
         </div>
     </div>
   )
