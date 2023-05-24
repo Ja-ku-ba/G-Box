@@ -1,0 +1,146 @@
+/* Global */
+:root {
+    --color-main: #16161d;
+    --color-text: #f9f9f9;
+    --color-dark: #070709;
+    --color-card: #1f1f2e;
+    --color-gray: #677;
+    --color-bg: #f3f6f9;
+    --color-light: #acb4bd;
+    --color-lighter: #f9f9f9;
+    --color-white: #fff;
+    --color-border:#e0e3e6;
+}
+  
+.dark {
+    --color-main: #f68657;
+    --color-text: #d6d1d1;
+    --color-dark: #f5f6f7;
+    --color-gray: #999;
+    --color-bg: #1f2124;
+    --color-lighter: #292a2c;
+    --color-white: #2e3235;
+    --color-border:#252629;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-main);
+    color: var(--color-text) !important;
+}
+/* End global */
+
+
+/* nav */
+nav {
+    background-color: var(--color-dark);
+    color: var(--color-text);
+}
+
+.nav-link {
+    color: var(--color-text) !important;
+}
+
+.clock {
+    text-decoration: none !important;
+    font-size: 130%;
+    color: var(--color-text) !important;
+}
+
+@media (min-width: 992px) {
+    .nav-rigth {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+/* end nav */
+
+/* inbox */
+
+.inbox-list-box {
+    background-color: var(--color-card);
+    color: white;
+    border: none;
+}
+
+@media (min-width: 768px) { 
+    .inbox-list {
+        background-color: #16161d;
+        width: 80%;
+        padding: 5px;
+        margin: auto;
+    }
+    .list-group-item {
+        border-radius: 5px !important;
+    }
+}
+
+@media (max-width: 768px) { 
+    .inbox-list {
+        background-color: #16161d;
+        margin: auto;
+        height: 80%;
+        font-size: 80%;
+        border-bottom: 1px solid gray;
+    }
+}
+/* end inbox */
+
+
+/* Sendbox */
+.send {
+    background-color: var(--color-card);
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.send-element {
+    padding-bottom: 20px;
+}
+
+.recievers-label {
+    margin-top: 8px;
+}
+
+.send-element textarea {
+    height: 300px;
+}
+
+.send-element button {
+    background-color: #999;
+    color: white;
+    width: 30%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: -5px;
+}
+
+@media (min-width: 768px) { 
+    .send {
+        width: 60%;
+        margin: auto;
+    }
+}
+/* 
+@media (max-width: 768px) {
+} */
+/* end sendbox */
+
+/* login */
+.login-container {
+    background-color: var(--color-card);
+    color: white;
+    padding: 5px;
+}
+
+.card {
+    background-color: var(--color-card);
+    color: white;
+    width: 80%;
+    margin: 25px auto;
+}

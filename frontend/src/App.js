@@ -1,30 +1,25 @@
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-} from "react-router-dom";
-
+import logo from './logo.svg';
 import './App.css';
-import Inbox from './pages/Inbox'
-import Navbar from './components/Navbar'
-import Mail from './pages/Mail'
-import Send from './pages/Send'
-import Login from "./pages/Login";
 
 function App() {
-    return (
-        <Router>
-            <div className="App">
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/inbox/:filter" element={<Inbox />} />
-                    <Route path="/mail/:subject/:date" element={<Mail />} />
-                    <Route path="/send" element={<Send />} />
-                </Routes>
-            </div>
-        </Router>
-    );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
 export default App;
