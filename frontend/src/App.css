@@ -24,6 +24,10 @@ body {
 /*======================*/
 /* Navbar               */
 /*======================*/
+.clock {
+    white-space: nowrap;
+}
+
 nav {
     display: flex;
     flex-direction: row;
@@ -49,8 +53,12 @@ nav .navbar-groups button {
     margin-top: 6px;
 }
 
+nav .searchbar-component{
+    width: 100%;
+    min-width: 400px;
+}
+
 nav .searchbar {
-    width: 750px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -58,6 +66,7 @@ nav .searchbar {
 
 nav .searchbar input {
     width: 100%;
+    min-width: 400px;
     height: 48px;
     outline: none;
     border: none;
@@ -92,5 +101,45 @@ nav .searchbar input {
 .nav-links {
     position: relative;
     left: -10px;
+    white-space: nowrap;
+}
+.filter-container {
+    display: flex;
+    justify-content: center;
+}
+.searchbar-filters {
+    overflow: hidden;
+    position: absolute;
+    top: 69px;
+    border: 1px solid gray;
+    background-color: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    font-size: 15px;
 }
 
+.searchbar-filters li {
+    list-style: none;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.searchbar-filters li input {
+    width: 100%;
+    max-width: 80%;
+    height: 20px;
+    border:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    border-bottom: 1px solid red;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+    nav .nav-links {
+        visibility: hidden;
+        display: none;
+    }
+}
