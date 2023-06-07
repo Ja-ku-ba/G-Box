@@ -183,3 +183,48 @@ nav .searchbar input {
         display: none;
     }
 }
+/* end nacbar */
+
+
+/* sidebar */
+.sidebar-container {
+    background-color: var(--color-nav);
+    position: absolute;
+    margin-left: -40px;
+}
+
+.sidebar {
+    width: 300px;
+    height: 100vh;                                              /* change it later, when footer will be ready */
+}
+
+.sidebar li{
+    width: auto;
+    list-style: none;
+    padding: 5px;
+
+}
+
+.sidebar li:hover {
+    background-color: var(--color-search);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

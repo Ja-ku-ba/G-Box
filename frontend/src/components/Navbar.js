@@ -1,11 +1,12 @@
 import Watch from "./ Navbar/Watch";
+import Sidebar from "./Sidebar";
 import SearchBar from "./ Navbar/SearchBar";
 
 const Navbar = () => {
   return (
     <nav>
       <div className="navbar-groups">
-        <button type="button">&#9776;</button>
+        <Sidebar />
         <Watch />
       </div>
 
