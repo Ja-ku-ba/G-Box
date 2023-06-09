@@ -248,14 +248,23 @@ footer ul li {
     cursor: pointer;
 }
 
+.mail-list-items:hover {
+    background-color: var(--color-search);
+}
+
 .mail-list-date {
     margin-left: auto;
+    margin-right: 10px;
+}
+
+.mail-from {
+    width: 200px;
+    overflow: hidden;
 }
 
 .mail-info {
     padding: 5px;
-    margin: 0 5px 0 5px;
-
+    margin: 0 0 0 10px;
 }
 
 

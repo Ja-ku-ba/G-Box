@@ -25,7 +25,7 @@ const MailsListItem = ({ mail }) => {
   };
   return (
     <div className="mail-list-items">
-      <strong className="mail-info">{getFrom(mail.from)}</strong>
+      <strong className="mail-info mail-from">{getFrom(mail.from)}</strong>
       <span className="mail-info">{getBody(mail.subject)}</span>
       <span className="mail-list-date">{getDate(mail.date)}</span>
     </div>
