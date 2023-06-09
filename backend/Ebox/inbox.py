@@ -31,8 +31,6 @@ def get_inbox(filter):
                 html_body = part.get_payload(decode=True)
                 email_data["html_body"] = html_body.decode()
         my_messages.append(email_data)
-    for ele in my_messages:
-        print("--------------", my_messages)
     return my_messages
 
 

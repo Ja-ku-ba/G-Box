@@ -7,11 +7,11 @@ const Navbar = () => {
     setIsShown((current) => !current);
   };
   return (
-    <div>
+    <div className="sideside">
       <button onClick={handleClick} type="button">
         &#9776;
       </button>
-      <div className={"sidebar-container"}>{isShown && <SideFilters />}</div>
+      <div className="sidebar-container">{isShown && <SideFilters />}</div>
     </div>
   );
 };

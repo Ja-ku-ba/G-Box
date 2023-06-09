@@ -24,6 +24,11 @@ body {
 /*======================*/
 /* Navbar               */
 /*======================*/
+.nav-container {
+    position: sticky;
+    top: 0;
+}
+
 .clock {
     white-space: nowrap;
 }
@@ -124,7 +129,6 @@ nav .searchbar input {
     justify-content: flex-start;
 }
 
-
 .searchbar-component li {
     width: 100%;
     margin: auto;
@@ -191,7 +195,9 @@ nav .searchbar input {
     background-color: var(--color-nav);
     position: absolute;
     margin-left: -40px;
-    height: calc(100% - 64px);
+    display: block;
+    z-index: 0;
+    height: calc(100vh - 64px);
 }
 
 .sidebar {
@@ -237,6 +243,11 @@ footer ul li {
 
 
 /* mails list */
+.mail-list-container {
+    width: auto;
+    display: block;
+    z-index: 0;
+}
 .mail-list-items {
     font-size: 15px;
     width: 100%;

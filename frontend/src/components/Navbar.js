@@ -4,7 +4,7 @@ import SearchBar from "./ Navbar/SearchBar";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="nav-container">
       <div className="navbar-groups">
         <Sidebar />
         <Watch />

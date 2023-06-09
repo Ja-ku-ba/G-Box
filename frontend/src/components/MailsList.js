@@ -11,14 +11,14 @@ const MailsList = () => {
     try {
       const response = await fetch("/inbox/ALL");
       const data = await response.json();
-      setMails(data);
+      setMails(data.reverse());
     } catch (error) {
       console.error("Error fetching mails:", error);
     }
   };
 
   return (
-    <div>
+    <div className="mail-list-container">
       {mails.map((mail) => (
         <MailsListItem key={mail.id} mail={mail} />
       ))}
