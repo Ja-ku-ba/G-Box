@@ -236,7 +236,27 @@ footer ul li {
 /* end footer */
 
 
+/* mails list */
+.mail-list-items {
+    font-size: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid var(--color-search);
+    cursor: pointer;
+}
 
+.mail-list-date {
+    margin-left: auto;
+}
+
+.mail-info {
+    padding: 5px;
+    margin: 0 5px 0 5px;
+
+}
 
 
 

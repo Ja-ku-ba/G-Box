@@ -24,13 +24,10 @@ const MailsListItem = ({ mail }) => {
     return date.slice(5, 21);
   };
   return (
-    <div>
-      <h2>{getFrom(mail.from)}</h2>
-      <h3>{getDate(mail.date)}</h3>
-      <span>{getBody(mail.subject)}</span>
-      <p>{getBody(mail.body)}</p>
-      <h1>{mail.body}</h1>
-      <hr />
+    <div className="mail-list-items">
+      <strong className="mail-info">{getFrom(mail.from)}</strong>
+      <span className="mail-info">{getBody(mail.subject)}</span>
+      <span className="mail-list-date">{getDate(mail.date)}</span>
     </div>
   );
 };
