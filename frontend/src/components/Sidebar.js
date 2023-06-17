@@ -1,13 +1,13 @@
 import { useState } from "react";
 import SideFilters from "./Sidebar/SideFilters";
 
-const Navbar = () => {
+const Sidebar = () => {
   const [isShown, setIsShown] = useState(false);
   const handleClick = () => {
     setIsShown((current) => !current);
   };
   return (
-    <div className="sideside">
+    <div className="sideside Sidebar">
       <button onClick={handleClick} type="button">
         &#9776;
       </button>
@@ -16,4 +16,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Sidebar;

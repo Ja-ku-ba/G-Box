@@ -2,7 +2,7 @@ import React from "react";
 
 const MailsListItem = ({ mail }) => {
   let getFrom = (subject) => {
-    if (subject.slice(0, 2) != "=?") {
+    if (subject.slice(0, 2) !== "=?") {
       return subject.match(/^(.*?)(?=\s?<|$)/)[1];
     }
     return subject.match(
