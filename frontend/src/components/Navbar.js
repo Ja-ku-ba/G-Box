@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Watch from "./ Navbar/Watch";
 import SearchBar from "./ Navbar/SearchBar";

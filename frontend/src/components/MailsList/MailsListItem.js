@@ -23,6 +23,7 @@ const MailsListItem = ({ mail }) => {
   let getDate = (date) => {
     return date.slice(5, 21);
   };
+
   return (
     <div className="mail-list-items">
       <strong className="mail-info mail-from">{getFrom(mail.from)}</strong>

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import MailsListItem from "../components/MailsList/MailsListItem";
+
 const MailsList = ({ showSidebar }) => {
   const [mails, setMails] = useState([]);
 
   useEffect(() => {
     getMails();
   }, []);
+
   const getMails = async () => {
     try {
       const response = await fetch("/inbox/ALL");
@@ -15,17 +17,17 @@ const MailsList = ({ showSidebar }) => {
       console.error("Error fetching mails:", error);
     }
   };
-  // mail-list-container
+
   return (
-    <div
-      className={`mail-list-container Mailslist ${
-        showSidebar ? "small-sidebar" : "normal-sidebar"
-      }`}
-    >
-      {mails.map((mail) => (
-        <MailsListItem key={mail.id} mail={mail} />
-      ))}
-    </div>
+      <div
+          className={`mail-list-container Mailslist ${
+              showSidebar ? "small-sidebar" : "normal-sidebar"
+          }`}
+      >
+        {mails.map((mail) => (
+            <MailsListItem key={mail.index} mail={mail} />
+        ))}
+      </div>
   );
 };
 
