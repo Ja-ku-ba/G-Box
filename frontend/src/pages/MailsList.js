@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import MailsListItem from "./MailsList/MailsListItem";
-const MailsList = () => {
+import MailsListItem from "../components/MailsList/MailsListItem";
+
+const MailsList = ({ showSidebar }) => {
   const [mails, setMails] = useState([]);
 
   useEffect(() => {
@@ -18,11 +19,15 @@ const MailsList = () => {
   };
 
   return (
-    <div className="mail-list-container">
-      {mails.map((mail) => (
-        <MailsListItem key={mail.id} mail={mail} />
-      ))}
-    </div>
+      <div
+          className={`mail-list-container Mailslist ${
+              showSidebar ? "small-sidebar" : "normal-sidebar"
+          }`}
+      >
+        {mails.map((mail) => (
+            <MailsListItem key={mail.index} mail={mail} />
+        ))}
+      </div>
   );
 };
 

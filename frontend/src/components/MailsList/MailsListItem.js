@@ -2,7 +2,7 @@ import React from "react";
 
 const MailsListItem = ({ mail }) => {
   let getFrom = (subject) => {
-    if (subject.slice(0, 2) != "=?") {
+    if (subject.slice(0, 2) !== "=?") {
       return subject.match(/^(.*?)(?=\s?<|$)/)[1];
     }
     return subject.match(
@@ -23,6 +23,7 @@ const MailsListItem = ({ mail }) => {
   let getDate = (date) => {
     return date.slice(5, 21);
   };
+
   return (
     <div className="mail-list-items">
       <strong className="mail-info mail-from">{getFrom(mail.from)}</strong>
