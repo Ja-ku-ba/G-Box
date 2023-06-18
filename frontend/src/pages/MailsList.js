@@ -7,7 +7,6 @@ const MailsList = ({ showSidebar }) => {
   useEffect(() => {
     getMails();
   }, []);
-
   const getMails = async () => {
     try {
       const response = await fetch("/inbox/ALL");

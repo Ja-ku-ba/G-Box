@@ -286,13 +286,8 @@ footer ul li {
 }
 
 .small-sidebar {
-    width: 10%;
+    margin-left: 300px;
 }
-
-.normal-sidebar {
-    width: 50%;
-}
-
 
 
 

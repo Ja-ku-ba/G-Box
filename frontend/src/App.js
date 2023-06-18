@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
+      <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <MailsList showSidebar={showSidebar} />
       <Footbar />
     </div>
