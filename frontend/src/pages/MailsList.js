@@ -19,13 +19,16 @@ const MailsList = ({ showSidebar }) => {
 
   return (
       <div
-          className={`mail-list-container Mailslist ${
+          className={`mail-list-container ${
               showSidebar ? "small-sidebar" : "normal-sidebar"
           }`}
       >
-        {mails.map((mail) => (
-            <MailsListItem key={mail.index} mail={mail} />
-        ))}
+        <div className={"mails-list"}>
+          {mails.map((mail) => (
+
+              <MailsListItem key={mail.index} mail={mail} />
+          ))}
+        </div>
       </div>
   );
 };
