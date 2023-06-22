@@ -1,5 +1,12 @@
 import React from "react";
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
 const MailsListItem = ({ mail }) => {
   let getFrom = (subject) => {
     if (subject.slice(0, 2) !== "=?") {
@@ -25,11 +32,13 @@ const MailsListItem = ({ mail }) => {
   };
 
   return (
-    <div className="mail-list-items">
-      <strong className="mail-info mail-from">{getFrom(mail.from)}</strong>
-      <span className="mail-info">{getBody(mail.subject)}</span>
-      <span className="mail-list-date">{getDate(mail.date)}</span>
-    </div>
+    <Link to={`/mail/${mail.index}`}>
+      <div className="mail-list-items">
+        <strong className="mail-info mail-from">{getFrom(mail.from)}</strong>
+        <span className="mail-info">{getBody(mail.subject)}</span>
+        <span className="mail-list-date">{getDate(mail.date)}</span>
+      </div>
+    </Link>
   );
 };
 

@@ -10,6 +10,7 @@ from .models import User
 from Ebox.inbox import get_inbox
 from Ebox.send import send_mail
 from Ebox.login import login
+from Ebox.mail import get_mail
 
 import os
 
@@ -39,13 +40,18 @@ def emails(request, filter):
     return Response(response)
 
 @api_view(["GET"])
+def get_target_mail(request, pk):
+    response = get_mail(pk)
+    return Response(response)
+
+@api_view(["GET"])
 def get_username(request):
     try:
         username = User.objects.order_by('-id')[0]
         return Response(username.email, status=status.HTTP_200_OK)
     except:
         return Response(status=status.HTTP_100_CONTINUE)
-    
+
 @api_view(["POST"])
 @parser_classes([JSONParser])
 def send(request):
