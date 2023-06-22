@@ -301,9 +301,31 @@ footer ul li {
     padding: 5px;
     margin: 0 0 0 10px;
 }
+/* end mail list */
 
+/* mail view */
+.mail-view-container {
+    background-color: white;
+    padding: 2px 10px;
+}
 
+.mail-nav {
+    height: 20px;
+    width: 100%;
+    display: flex;
+}
 
+.mail-nav button{
+    outline: none;
+    background: transparent;
+    border: 1px solid transparent;
+    margin: 0 50px 0 5px;
+}
 
+.mail-nav-icons {
+    width: auto;
+    height: auto;
+    filter: invert(36%) sepia(0%) saturate(2896%) hue-rotate(232deg) brightness(100%) contrast(85%);
+}
 
 

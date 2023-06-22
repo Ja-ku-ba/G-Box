@@ -26,4 +26,8 @@ def get_mail(index):
         elif part.get_content_type() == 'text/html':
             html_body = part.get_payload(decode=True)
             email_data["html_body"] = html_body.decode()
+    print("-----------------------------")
+    for ele in email_data:
+        print(ele)
+        print("-----------------------------")
     return email_data

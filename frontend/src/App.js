@@ -20,7 +20,7 @@ function App() {
                 <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
                 <Routes>
                     <Route path="/" element={<MailsList showSidebar={showSidebar} />} exact />
-                    <Route path="/mail/:id" element={<MailView />} exact />
+                    <Route path="/mail/:id" element={<MailView showSidebar={showSidebar} /> } exact />
                 </Routes>
                 <Footbar />
             </div>
