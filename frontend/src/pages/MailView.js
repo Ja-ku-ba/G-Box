@@ -30,23 +30,22 @@ const MailView = ({showSidebar}) => {
     };
 
     const getDate = (date) => {
-        var newDate = new Date(date);
-        var day = newDate.getDay()
-        if (`${day}`.length < 2){
-            day = "0" + day
-        }
-        var month = newDate.getMonth()
-        if (`${month}`.length < 2){
-            month = "0" + month
-        }
-        var year = newDate.getFullYear()
-        var time = `${newDate.getHours()}:${newDate.getMinutes()}`
-        return `${time} ${day}.${month}.${year}`
-    }
+        const newDate = new Date(date);
+        const day = newDate.getDate().toString().padStart(2, '0');
+        const month = (newDate.getMonth() + 1).toString().padStart(2, '0');
+        const year = newDate.getFullYear();
+        const time = `${newDate.getHours()}:${newDate.getMinutes()}`;
+        return `${time} ${day}.${month}.${year}`;
+    };
 
-    const getEmail = () => {
+    const getSubject = (subject) => {
+        const encodedHeader = subject.replace(/\?=/g, '').replace(/=\?UTF-8\?Q\?/g, '');
+        return encodedHeader.replace(/=([A-F0-9]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+    };
 
-    }
+    const getProperFormat = (data) => {
+        return decodeURIComponent(data.replace(/=([a-fA-F0-9]{2})/g));
+    };
 
     return (
         <div className={`mail-view-container ${showSidebar ? "small-sidebar" : "normal-sidebar"}`}>
@@ -63,22 +62,20 @@ const MailView = ({showSidebar}) => {
             </div>
             <hr/>
 
-            <div>
-                {mail ? (
-                    <div className={"mail-info"}>
-                        <h1 className={"mail-subject"}>{mail.subject}</h1>
-                        <div className={"mail-delivery-info"}>
-                            <span>{mail.from}</span>
-                            <span>{getDate(mail.date)}</span>
-                        </div>
-                        <div>
-                            {mail.html_body ? <div dangerouslySetInnerHTML={{ __html: mail.html_body }}></div> : mail.body}
-                        </div>
+            {mail ? (
+                <div className={"mail-info"}>
+                    <h1 className={"mail-subject"}>{getSubject(mail.subject)}</h1>
+                    <div className={"mail-delivery-info"}>
+                        <span>{getProperFormat(mail.from)}</span>
+                        <span>{getDate(mail.date)}</span>
                     </div>
-                ) : (
-                    <h1>Loading mail...</h1>
-                )}
-            </div>
+                    <div>
+                        {mail.html_body ? <div dangerouslySetInnerHTML={{ __html: mail.html_body }}></div> : mail.body}
+                    </div>
+                </div>
+            ) : (
+                <h1>Loading mail...</h1>
+            )}
         </div>
     );
 };
