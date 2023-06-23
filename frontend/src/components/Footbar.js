@@ -5,7 +5,7 @@ const Footbar = () => {
         <ul>
           <li>Creator</li>
           <li>Fonts</li>
-          <li>Link</li>
+          <li>Icons</li>
         </ul>
       </footer>
     </div>

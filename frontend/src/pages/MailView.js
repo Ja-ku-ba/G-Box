@@ -29,7 +29,22 @@ const MailView = ({showSidebar}) => {
         }
     };
 
-    const getDate = () => {
+    const getDate = (date) => {
+        var newDate = new Date(date);
+        var day = newDate.getDay()
+        if (`${day}`.length < 2){
+            day = "0" + day
+        }
+        var month = newDate.getMonth()
+        if (`${month}`.length < 2){
+            month = "0" + month
+        }
+        var year = newDate.getFullYear()
+        var time = `${newDate.getHours()}:${newDate.getMinutes()}`
+        return `${time} ${day}.${month}.${year}`
+    }
+
+    const getEmail = () => {
 
     }
 
@@ -46,23 +61,25 @@ const MailView = ({showSidebar}) => {
                     <img src={archiveIcon} alt="TrashBin" className="mail-nav-icons" height="20px" width="20px" />
                 </button>
             </div>
+            <hr/>
 
-            {mail ? (
-                <div>
-                    <h1>{mail.subject}</h1>
-                    <div>
-                        <span>{mail.from}</span>
-                        <span>{mail.date}</span>
+            <div>
+                {mail ? (
+                    <div className={"mail-info"}>
+                        <h1 className={"mail-subject"}>{mail.subject}</h1>
+                        <div className={"mail-delivery-info"}>
+                            <span>{mail.from}</span>
+                            <span>{getDate(mail.date)}</span>
+                        </div>
+                        <div>
+                            {mail.html_body ? <div dangerouslySetInnerHTML={{ __html: mail.html_body }}></div> : mail.body}
+                        </div>
                     </div>
-                    <div>
-                        {mail.html_body ? <div dangerouslySetInnerHTML={{ __html: mail.html_body }}></div> : mail.body}
-                    </div>
-                </div>
-            ) : (
-                <h1>Loading mail...</h1>
-            )}
+                ) : (
+                    <h1>Loading mail...</h1>
+                )}
+            </div>
         </div>
-
     );
 };
 
