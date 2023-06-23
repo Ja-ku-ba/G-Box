@@ -34,36 +34,35 @@ const MailView = ({showSidebar}) => {
     }
 
     return (
-        <div
-            className={`mail-view-container ${
-                showSidebar ? "small-sidebar" : "normal-sidebar"
-            }`}
-        >
-            <div className={"mail-nav"}>
-                <button type={"button"}>
-                    <img src={arrowLeft} alt={"ArrowLeft"} className={"mail-nav-icons"} height={"20px"} width={"20px"} />
-                </ button>
-                <button type={"button"}>
-                    <img src={trashBin} alt={"ArchiveIcon"} className={"mail-nav-icons"} height={"20px"} width={"20px"} />
-                </ button>
-                <button type={"button"} >
-                    <img src={archiveIcon} alt={"TrashBin"} className={"mail-nav-icons"} height={"20px"} width={"20px"} />
-                </ button>
+        <div className={`mail-view-container ${showSidebar ? "small-sidebar" : "normal-sidebar"}`}>
+            <div className="mail-nav">
+                <button type="button">
+                    <img src={arrowLeft} alt="ArrowLeft" className="mail-nav-icons" height="20px" width="20px" />
+                </button>
+                <button type="button">
+                    <img src={trashBin} alt="ArchiveIcon" className="mail-nav-icons" height="20px" width="20px" />
+                </button>
+                <button type="button">
+                    <img src={archiveIcon} alt="TrashBin" className="mail-nav-icons" height="20px" width="20px" />
+                </button>
             </div>
 
-            {mail?
-            <div>
-                <h1>{mail.subject}</h1>
+            {mail ? (
                 <div>
-                    <span>{mail.from}</span>
-                    <span>{mail.date}</span>
+                    <h1>{mail.subject}</h1>
+                    <div>
+                        <span>{mail.from}</span>
+                        <span>{mail.date}</span>
+                    </div>
+                    <div>
+                        {mail.html_body ? <div dangerouslySetInnerHTML={{ __html: mail.html_body }}></div> : mail.body}
+                    </div>
                 </div>
-                <div>
-                    {mail.html_body? mail.html_body: mail.body}
-                </div>
-            </div>: <h1>Loading mail...</h1>}
-
+            ) : (
+                <h1>Loading mail...</h1>
+            )}
         </div>
+
     );
 };
 
