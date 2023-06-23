@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import arrowLeft from "../assets/arrowLeft.svg"
 import trashBin from "../assets/trashBin.svg";
 import archiveIcon from "../assets/archiveIcon.svg";
+import LoadingAnimation from "../components/LoadingAnimation";
 
 const MailView = ({showSidebar}) => {
     const { id } = useParams();
@@ -74,7 +75,7 @@ const MailView = ({showSidebar}) => {
                     </div>
                 </div>
             ) : (
-                <h1>Loading mail...</h1>
+                <LoadingAnimation />
             )}
         </div>
     );

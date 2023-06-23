@@ -21,6 +21,8 @@ const MailsListItem = ({ mail }) => {
   };
 
   let getBody = (body) => {
+    const encodedHeader = body.replace(/\?=/g, '').replace(/=\?UTF-8\?Q\?/g, '');
+    body = encodedHeader.replace(/=([A-F0-9]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
     if (body.length > 50) {
       return `${body.slice(0, 47)}...`;
     }
@@ -29,6 +31,9 @@ const MailsListItem = ({ mail }) => {
 
   let getDate = (date) => {
     return date.slice(5, 21);
+  };
+
+  const getSubject = (subject) => {
   };
 
   return (
