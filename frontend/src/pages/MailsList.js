@@ -25,7 +25,7 @@ const MailsList = ({ showSidebar }) => {
           }`}
       >
         {mails.length > 0 ? (
-            <div className={"mails-list"}>
+            <div className={"round-corners"}>
               {mails.map((mail) => (
 
                   <MailsListItem key={mail.index} mail={mail} />

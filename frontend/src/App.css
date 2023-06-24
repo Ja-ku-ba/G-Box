@@ -33,6 +33,13 @@ a {
     text-decoration: none;
     color: var(--color-main);
 }
+
+/* used when sidebar is shown, then main content gains round corners */
+.round-corners {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
 /*======================*/
 /* End Global           */
 /*======================*/
@@ -106,6 +113,7 @@ a {
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    z-index: 2;
 }
 
 /* Tooltip text */
@@ -387,12 +395,6 @@ footer ul li {
     cursor: pointer;
     border-radius: 3px;
     border-bottom: 1px solid var(--color-nav);
-}
-
-.mails-list {
-    background-color: white;
-    border-radius: 15px;
-    overflow: hidden;
 }
 
 .mail-list-items:hover {
