@@ -48,12 +48,14 @@ a {
 /* Loading animation    */
 /*======================*/
 .animation-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: calc(100vh - 170px);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
+
 .lds-ripple {
     display: inline-block;
     position: relative;
@@ -438,6 +440,7 @@ footer ul li {
     background: transparent;
     border: 1px solid transparent;
     margin: 0 25px 0 5px;
+    padding-top: 5px;
 }
 
 .mail-nav-icons {
