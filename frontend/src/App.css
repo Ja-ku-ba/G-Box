@@ -28,6 +28,11 @@ hr {
 button {
     cursor: pointer;
 }
+
+a {
+    text-decoration: none;
+    color: var(--color-main);
+}
 /*======================*/
 /* End Global           */
 /*======================*/
