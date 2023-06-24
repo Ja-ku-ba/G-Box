@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import {
+    Link
+} from "react-router-dom";
 
 import arrowLeft from "../assets/arrowLeft.svg"
 import trashBin from "../assets/trashBin.svg";
@@ -51,14 +54,20 @@ const MailView = ({showSidebar}) => {
     return (
         <div className={`mail-view-container ${showSidebar ? "small-sidebar" : "normal-sidebar"}`}>
             <div className="mail-nav">
-                <button type="button">
-                    <img src={arrowLeft} alt="ArrowLeft" className="mail-nav-icons" height="20px" width="20px" />
-                </button>
-                <button type="button">
+                <Link to={"/"}>
+                    <button type="button" className={"tooltip"}>
+                        <img src={arrowLeft} alt="ArrowLeft" className="mail-nav-icons" height="20px" width="20px" />
+                        <span className="tooltiptext">Wyjdź</span>
+                    </button>
+                </Link>
+
+                <button type="button" className={"tooltip"}>
                     <img src={trashBin} alt="ArchiveIcon" className="mail-nav-icons" height="20px" width="20px" />
+                    <span className="tooltiptext">Usuń</span>
                 </button>
-                <button type="button">
+                <button type="button" className={"tooltip"}>
                     <img src={archiveIcon} alt="TrashBin" className="mail-nav-icons" height="20px" width="20px" />
+                    <span className="tooltiptext">Zarchiwizuj</span>
                 </button>
             </div>
             <hr/>
