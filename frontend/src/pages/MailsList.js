@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import MailsListItem from "../components/MailsList/MailsListItem";
 
+import MailsListItem from "../components/MailsList/MailsListItem";
+import LoadingAnimation from "../components/LoadingAnimation";
 const MailsList = ({ showSidebar }) => {
   const [mails, setMails] = useState([]);
 
@@ -23,12 +24,16 @@ const MailsList = ({ showSidebar }) => {
               showSidebar ? "small-sidebar" : "normal-sidebar"
           }`}
       >
-        <div className={"mails-list"}>
-          {mails.map((mail) => (
+        {mails.length > 0 ? (
+            <div className={"mails-list"}>
+              {mails.map((mail) => (
 
-              <MailsListItem key={mail.index} mail={mail} />
-          ))}
-        </div>
+                  <MailsListItem key={mail.index} mail={mail} />
+              ))}
+            </div>
+        ) : (
+            <LoadingAnimation />
+        )}
       </div>
   );
 };
