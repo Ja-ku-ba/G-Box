@@ -5,6 +5,9 @@ from rest_framework import status
 
 from django.contrib.auth.hashers import make_password, check_password
 
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+
 from .models import User
 
 from Ebox.inbox import get_inbox
@@ -15,6 +18,20 @@ from Ebox.mail import get_mail
 import os
 
 # Create your views here.
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Add custom claims
+        token['email'] = user.email
+        # ...
+
+        return token
+    
+class MyTokenObtainPairView(TokenObtainPairSerializer):
+    serialzer_class = MyTokenObtainPairSerializer
+
 @api_view(["POST"])
 @parser_classes([JSONParser])
 def login_user(request):

@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Footbar from "./components/Footbar";
 import MailsList from "./pages/MailsList";
 import MailView from "./pages/MailView";
+import Login from "./pages/Login";
 
 function App() {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -20,6 +21,7 @@ function App() {
                 <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
                 <Routes>
                     <Route path="/" element={<MailsList showSidebar={showSidebar} />} exact />
+                    <Route path="/login" element={<Login/>} />
                     <Route path="/mail/:id" element={<MailView showSidebar={showSidebar} /> } exact />
                 </Routes>
                 <Footbar />
