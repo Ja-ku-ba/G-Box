@@ -166,6 +166,7 @@ nav {
     background-color: var(--color-nav);
     color: var(--color-nav-text);
     height: 64px;
+    z-index: 3;
 }
 
 nav .navbar-groups {
@@ -433,6 +434,8 @@ footer ul li {
     height: 20px;
     width: 100%;
     display: flex;
+    position: relative;
+    z-index: 0;
 }
 
 .mail-nav button{
