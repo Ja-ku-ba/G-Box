@@ -4,8 +4,11 @@ const Login = () => {
 
     return (
         <form>
-            <label></label>
-            <input type={"text"}/>
+                <label htmlFor={"email"}>Email</label>
+                <input type={"text"} id={"email"}/>
+                <label htmlFor={"passcode"}>Kod</label>
+                <input type={"password"} id={"passcode"}/>
+                <input type={"submit"} value={"Zaloguj się"}/>
         </form>
     );
 };

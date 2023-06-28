@@ -29,8 +29,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         return token
     
-class MyTokenObtainPairView(TokenObtainPairSerializer):
-    serialzer_class = MyTokenObtainPairSerializer
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 @api_view(["POST"])
 @parser_classes([JSONParser])

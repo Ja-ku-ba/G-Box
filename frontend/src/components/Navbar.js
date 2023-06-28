@@ -1,7 +1,7 @@
 import Sidebar from "./Sidebar";
 import Watch from "./ Navbar/Watch";
 import SearchBar from "./ Navbar/SearchBar";
-
+import {Link} from "react-router-dom";
 const Navbar = ({ showSidebar, setShowSidebar }) => {
     return (
         <nav className="nav-container">
@@ -18,6 +18,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
             <div className={`navbar-groups nav-links ${showSidebar ? "small" : ""}`}>
                 <a>&nbsp; mail@example.com</a>
                 <a>&nbsp; Wyloguj</a>
+                <Link to={"/login"}>Zaloguj</Link>
             </div>
         </nav>
     );
