@@ -13,7 +13,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
                 {/*<button type={"button"} onClick={ () => setShowSidebar(!showSidebar) }>*/}
                     <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
                 {/*</button>*/}
-                <Watch />
+                <Link to={"/"}><Watch /></Link>
             </div>
             <div className="navbar-groups searchbar-component">
                 <SearchBar />
