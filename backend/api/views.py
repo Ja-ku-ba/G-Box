@@ -26,7 +26,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         # Add custom claims
         token['email'] = user.email
         # ...
-
+        print(token)
         return token
     
 class MyTokenObtainPairView(TokenObtainPairView):

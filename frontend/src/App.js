@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import  { AuthProvider } from "./context/AuthContext";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -14,18 +15,20 @@ function App() {
 
     return (
         <Router>
-            <div className="App">
-                <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-                <Routes>
-                    {/* if conditions in <PrivateRoute/> are not met, then redirects you to login page */}
-                    <Route element={<Login/>} path={"/login"} exact/>
-                    <Route element={<PrivateRoute/>}>
-                        <Route path="/" element={<MailsList showSidebar={showSidebar} />} exact />
-                        <Route path="/mail/:id" element={<MailView showSidebar={showSidebar} />} exact />
-                    </Route>
-                </Routes>
-                <Footbar />
-            </div>
+            <AuthProvider>
+                <div className="App">
+                    <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+                    <Routes>
+                        {/* if conditions in <PrivateRoute/> are not met, then redirects you to login page */}
+                        <Route element={<Login/>} path={"/login"} exact/>
+                        <Route element={<PrivateRoute/>}>
+                            <Route path="/" element={<MailsList showSidebar={showSidebar} />} exact />
+                            <Route path="/mail/:id" element={<MailView showSidebar={showSidebar} />} exact />
+                        </Route>
+                    </Routes>
+                    <Footbar />
+                </div>
+            </AuthProvider>
         </Router>
     );
 }
