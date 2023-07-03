@@ -6,7 +6,7 @@ import {useContext} from "react";
 import AuthContext from "../context/AuthContext";
 
 const Navbar = ({ showSidebar, setShowSidebar }) => {
-    let {name} = useContext(AuthContext)
+    let {user} = useContext(AuthContext)
     return (
         <nav className="nav-container">
             <div className="navbar-groups">
@@ -20,9 +20,14 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
             </div>
 
             <div className={`navbar-groups nav-links ${showSidebar ? "small" : ""}`}>
-                <a>&nbsp; mail@example.com, {name}</a>
-                <a>&nbsp; Wyloguj</a>
-                <Link to={"/login"}>Zaloguj</Link>
+                { user && <a>&nbsp; {user.email}</a>}
+                { user ? (
+                    <a>&nbsp; Wyloguj</a>
+                ) : (
+                    <Link to={"/login"}>Zaloguj</Link>
+                )}
+
+
             </div>
         </nav>
     );
