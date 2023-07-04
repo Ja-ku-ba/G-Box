@@ -12,7 +12,7 @@ export default AuthContext;
 export const AuthProvider = ({children}) => {
 
     let [user, setUser] = useState(() => localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null)
-    let [authTokens, setAuthToken] = useState(() => localStorage.getItem("authTokens") ? jwt_decode(localStorage.getItem("authTokens")) : null)
+    let [authTokens, setAuthToken] = useState(() => localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [loading, setLoadnig] = useState(true)
 
     let navigate = useNavigate();
@@ -47,25 +47,28 @@ export const AuthProvider = ({children}) => {
     }
 
     let updateToken = async () => {
+        console.log("TTTTTTTTTTTTTTTTTTT")
+        console.log(authTokens)
         let response = await fetch("/token/refresh/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
             },
-            body: JSON.stringify({'refresh': authTokens.refresh})
+            body:JSON.stringify({'refresh':authTokens?.refresh})
         })
-        console.log("Update token")
-        console.log(authTokens.refresh)
 
         let data = await response.json()
-
-        if (response.status === 200) {
+        console.log(data)
+        if (response.status === 200){
             setAuthToken(data)
             setUser(jwt_decode(data.access))
-            localStorage.setItem("authTokens", JSON.stringify(data))
-        }
-        else {
+            localStorage.setItem('authTokens', JSON.stringify(data))
+        }else{
             logoutUser()
+        }
+
+        if(loading){
+            setLoadnig(false)
         }
     }
 
@@ -80,7 +83,7 @@ export const AuthProvider = ({children}) => {
             if (authTokens){
                 updateToken()
             }
-        }, 100)
+        }, 1000)
         return () => clearInterval(interval)
     }, [authTokens, loading])
 
