@@ -47,8 +47,6 @@ export const AuthProvider = ({children}) => {
     }
 
     let updateToken = async () => {
-        console.log("TTTTTTTTTTTTTTTTTTT")
-        console.log(authTokens)
         let response = await fetch("/token/refresh/", {
             method:'POST',
             headers:{
@@ -58,7 +56,6 @@ export const AuthProvider = ({children}) => {
         })
 
         let data = await response.json()
-        console.log(data)
         if (response.status === 200){
             setAuthToken(data)
             setUser(jwt_decode(data.access))
@@ -83,7 +80,7 @@ export const AuthProvider = ({children}) => {
             if (authTokens){
                 updateToken()
             }
-        }, 1000)
+        }, 24000) // 4 minutes = 24000ms
         return () => clearInterval(interval)
     }, [authTokens, loading])
 
