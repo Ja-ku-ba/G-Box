@@ -461,3 +461,53 @@ footer ul li {
     display: flex;
     justify-content: space-between;
 }
+/* end mail view */
+
+/* login */
+.login-container {
+    margin: 15vh auto;
+    height: 350px;
+    border-radius: 15px;
+}
+
+.login-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    margin: auto;
+    padding: 5px 0 50px 0;
+}
+
+.login-element input {
+    background-color: var(--color-search);
+    border: 1px solid var(--color-search);
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.login-element input:hover {
+    background-color: white;
+    border: 1px solid var(--color-search);
+    border-radius: 5px;
+}
+
+.login-element .login-button {
+    background-color: var(--color-main);
+    color: var(--color-nav);
+    font-size: 20px;
+    height: 40px;
+    width: 125px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.login-element .login-button:hover {
+    background-color: var(--color-search);
+    color: var(--color-main);
+}
+
+.how-to-get-code a {
+    color: blue;
+}

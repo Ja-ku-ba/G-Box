@@ -4,12 +4,24 @@ import AuthContext from "../context/AuthContext";
 const Login = () => {
     let {loginUser} = useContext(AuthContext)
     return (
-        <form onSubmit={loginUser}>
+        <form onSubmit={loginUser} className={"login-container"}>
+            <div className={"login-element"}>
                 <label htmlFor={"email"}>Email</label>
                 <input type={"text"} id={"email"}/>
+            </div>
+            <div className={"login-element"}>
                 <label htmlFor={"password"}>Kod</label>
                 <input type={"password"} id={"password"}/>
-                <input type={"submit"} value={"Zaloguj się"}/>
+                <div className={"how-to-get-code"}>
+                    <small>
+                        Nie wiesz jak zdobyć kod? &nbsp;
+                        <a href={"https://www.youtube.com/watch?v=1YXVdyVuFGA"} target={"_blank"}>Kliknij ten link</a>
+                    </small>
+                </div>
+            </div>
+            <div className={"login-element"}>
+                <input className={"login-button"} type={"submit"} value={"Zaloguj się"}/>
+            </div>
         </form>
     );
 };

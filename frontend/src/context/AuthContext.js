@@ -35,7 +35,7 @@ export const AuthProvider = ({children}) => {
             localStorage.setItem("authTokens", JSON.stringify(data))
             navigate("/")
         } else {
-            alert("Something went wrong")
+            alert("Coś poszło nie tak, sprawdź dane i spróbuj ponownie")
         }
     }
 
