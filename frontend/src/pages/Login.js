@@ -3,19 +3,39 @@ import AuthContext from "../context/AuthContext";
 
 const Login = () => {
     let {loginUser} = useContext(AuthContext)
+
+    // const log = async () => {
+    //     let response = await fetch("/login/", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({'passocde': passcode, 'email': email})
+    //
+    //     })
+    //
+    //     let data = await response.json();
+    //     console.log(data, "---------")
+    //     if (response.status === 200){
+    //         console.log(data, "------------------------")
+    //     }
+    // }
+
+
     return (
         <form onSubmit={loginUser} className={"login-container"}>
+        {/* <form onSubmit={log} className={"login-container"}>*/}
             <div className={"login-element"}>
                 <label htmlFor={"email"}>Email</label>
-                <input type={"text"} id={"email"}/>
+                <input type={"email"} id={"email"}/>
             </div>
             <div className={"login-element"}>
-                <label htmlFor={"password"}>Kod</label>
-                <input type={"password"} id={"password"}/>
+                <label htmlFor={"passcode"}>Kod np:  nhbbmjrrhnumrojz</label>
+                <input  type={"password"} id={"passcode"}/>
                 <div className={"how-to-get-code"}>
                     <small>
                         Nie wiesz jak zdobyć kod? &nbsp;
-                        <a href={"https://www.youtube.com/watch?v=1YXVdyVuFGA"} target={"_blank"}>Kliknij ten link</a>
+                        <a href={"https://www.youtube.com/watch?v=1YXVdyVuFGA"} rel="noreferrer" target={"_blank"}>Kliknij ten link</a>
                     </small>
                 </div>
             </div>

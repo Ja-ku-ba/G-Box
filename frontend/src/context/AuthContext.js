@@ -19,12 +19,12 @@ export const AuthProvider = ({children}) => {
 
     let loginUser = async (e) => {
         e.preventDefault()
-        let response = await fetch("/token/", {
+        let response = await fetch("/login/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({'username': e.target.email.value, 'password': e.target.password.value})
+            body: JSON.stringify({'email': e.target.email.value, 'passcode': e.target.passcode.value})
         })
 
         let data = await response.json();
@@ -45,16 +45,40 @@ export const AuthProvider = ({children}) => {
         localStorage.removeItem("authTokens")
         navigate("/login")
     }
-
+    // let updateToken = async () => {
+    //     console.log(("-----------------------------"))
+    //     console.log(authTokens)
+    //     let response = await fetch("/token/refresh/", {
+    //         method:'POST',
+    //         headers:{
+    //             'Content-Type':'application/json'
+    //         },
+    //         body:JSON.stringify({'refresh':authTokens?.refresh})
+    //     })
+    //     console.log(response)
+    //     let data = await response.json()
+    //     if (response.status === 200){
+    //         console.log("Poszło cacy")
+    //         setAuthToken(data)
+    //         setUser(jwt_decode(data.access))
+    //         localStorage.setItem('authTokens', JSON.stringify(data))
+    //     }else{
+    //         console.log("Coś poszło nie tak")
+    //     }
+    //
+    // }
     let updateToken = async () => {
+        console.log(("-----------------------------"))
+        console.log(authTokens)
         let response = await fetch("/token/refresh/", {
             method:'POST',
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Authorization': `Bearer ${authTokens?.refresh}`
             },
             body:JSON.stringify({'refresh':authTokens?.refresh})
         })
-
+        console.log(response)
         let data = await response.json()
         if (response.status === 200){
             setAuthToken(data)
@@ -80,7 +104,7 @@ export const AuthProvider = ({children}) => {
             if (authTokens){
                 updateToken()
             }
-        }, 24000) // 4 minutes = 24000ms
+        }, 1000) // 4 minutes = 24000ms
         return () => clearInterval(interval)
     }, [authTokens, loading])
 
