@@ -89,7 +89,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const interval = setInterval(() => {
             updateToken();
-        }, 5000); // 4 minutes = 240,000ms
+        }, 240000); // 4 minutes = 240,000ms
         return () => clearInterval(interval);
     }, [authTokens]);
 
