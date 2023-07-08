@@ -4,30 +4,11 @@ import AuthContext from "../context/AuthContext";
 const Login = () => {
     let {loginUser} = useContext(AuthContext)
 
-    // const log = async () => {
-    //     let response = await fetch("/login/", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({'passocde': passcode, 'email': email})
-    //
-    //     })
-    //
-    //     let data = await response.json();
-    //     console.log(data, "---------")
-    //     if (response.status === 200){
-    //         console.log(data, "------------------------")
-    //     }
-    // }
-
-
     return (
         <form onSubmit={loginUser} className={"login-container"}>
-        {/* <form onSubmit={log} className={"login-container"}>*/}
             <div className={"login-element"}>
                 <label htmlFor={"email"}>Email</label>
-                <input type={"email"} id={"email"}/>
+                <input type={"text"} id={"email"}/>
             </div>
             <div className={"login-element"}>
                 <label htmlFor={"passcode"}>Kod np:  nhbbmjrrhnumrojz</label>

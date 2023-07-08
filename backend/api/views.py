@@ -20,26 +20,25 @@ from Ebox.mail import get_mail
 @api_view(["POST"])
 @parser_classes([JSONParser])
 def login_user(request):
-    email = request.data.get("email")
-    code = request.data.get("passcode")
-    response = login(email, code)
+    username = request.data.get("username")
+    code = request.data.get("password")
+    response = login(username, code)
     
     if response == 200:
         try:
-            user = User.objects.get(email = email)
-            token = MyTokenObtainPairSerializer().get_token(user)
-            refresh_token = str(RefreshToken.for_user(user).access_token)
+            user = User.objects.get(username = username)
             return Response(
                 {
-                    "access": str(token),
-                    "refresh": refresh_token
+                    # access is a refresh token only because that way its work
+                    "access": str(RefreshToken.for_user(user).access_token),
+                    "refresh": str(MyTokenObtainPairSerializer().get_token(user))
                 },
                 status=status.HTTP_200_OK
             )
         except:
             user = User.objects.create(
-                email=email, 
-                password="AECSL()^$#@ąłęść",
+                password="password123",
+                username=username
             )
             token = MyTokenObtainPairSerializer().get_token(user)
             refresh_token = str(RefreshToken.for_user(user).access_token)
