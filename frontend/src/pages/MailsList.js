@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 
+import {Link} from "react-router-dom";
+
 import MailsListItem from "../components/MailsList/MailsListItem";
 import LoadingAnimation from "../components/LoadingAnimation";
+import newMailIcon from "../assets/newMailIcon.svg"
+
 const MailsList = ({ showSidebar }) => {
   const [mails, setMails] = useState([]);
 
@@ -34,6 +38,9 @@ const MailsList = ({ showSidebar }) => {
         ) : (
             <LoadingAnimation />
         )}
+        <Link to={"/send/"}>
+          <img src={newMailIcon} alt="Send mail" className="add-new-mail" height="75px" width="75px" />
+        </Link>
       </div>
   );
 };

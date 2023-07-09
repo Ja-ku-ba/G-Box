@@ -1,9 +1,16 @@
 import React from "react";
-
-const SendMail = () => {
+import SendMailDetails from "../components/SendMail/SendMailDetails";
+const SendMail = ({ showSidebar }) => {
 
     return (
-        <div></div>
+        <div
+            className={`mail-list-container ${
+                showSidebar ? "small-sidebar" : "normal-sidebar"
+            }`}
+        >
+            <SendMailDetails></SendMailDetails>
+
+        </div>
     );
 };
 
