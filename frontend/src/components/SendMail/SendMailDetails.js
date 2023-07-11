@@ -8,7 +8,7 @@ const SendMailDetails = () => {
         if (sendTo.includes(person)){
             alert("Ten mail już został dodany")
         }
-        else{
+        else if (person !== ""){
             setSendTo((prevSendTo) => [...prevSendTo, person]);
         }
         e.target.reset();
@@ -18,7 +18,10 @@ const SendMailDetails = () => {
         <div className="send-mail-nav">
             <ul>
                 {sendTo.map((person, index) => (
-                    <li key={index}>{person}</li>
+                    <li key={index}>
+                        <span>{person}</span>
+                        <i className={"delete-person"}></i>
+                    </li>
                 ))}
             </ul>
             <form onSubmit={handleSubmit}>

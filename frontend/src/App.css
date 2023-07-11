@@ -538,28 +538,33 @@ footer ul li {
     border-radius: 15px;
 }
 
-.send-mail-nav li {
+.send-mail-nav ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
 
 }
 
-.send-mail-nav li ul {
-    padding: 2px 5px;
+.send-mail-nav ul li {
+    padding: 3px 0 3px 10px;
     background-color: var(--color-main);
     color: var(--color-nav);
     display: flex;
     justify-content: space-between;
     margin: 3px auto;
-    border-radius: 3px;
+    border-radius: 23px;
     text-align: left;
 }
 
-.send-mail-nav li ul:before {
-    background: url("assets/closeX.svg");
+.send-mail-nav ul li:hover {
+    filter: invert(100%);
+}
+
+.delete-person {
+    background-image: url("assets/closeX.svg");
     position: relative;
-    height: 300px;
-    top: 50%;
-    left: 50%;
+    width: 30px;
+    padding: 0 3px 0 3px;
+    top: -3px;
+    z-index: 2;
 }
