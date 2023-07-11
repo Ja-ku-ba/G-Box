@@ -14,6 +14,7 @@ body {
     --color-nav: #F6F8FC;
     --color-nav-text: #606262;
     --color-search: #EAF1FB;
+    --color-border: #4A6387;
 }
 
 .dark {
@@ -590,6 +591,11 @@ footer ul li {
     padding: 0 3px;
 }
 
+.add-receivers-submit:active {
+    filter: invert(100%);
+    border: 1px solid var(--color-border);
+}
+
 .add-receivers-submit {
     pointer-events: bounding-box;
     cursor: pointer;
@@ -609,4 +615,27 @@ footer ul li {
     flex-direction: column;
     width: 95%;
     margin: auto;
+    padding-bottom: 10px;
+}
+
+.email-body-text {
+    border-radius: 5px;
+    border: 1px solid var(--color-nav);
+    padding: 7px;
+}
+
+.email-body-button {
+    border-radius: 5px;
+    border: none;
+    color: var(--color-nav);
+    background-color: var(--color-main);
+    width: 30%;
+    height: 35px;
+    margin: 5px auto;
+    cursor: pointer;
+}
+
+.email-body-button:hover {
+    filter: invert(100%);
+    border: 1px solid var(--color-border);
 }

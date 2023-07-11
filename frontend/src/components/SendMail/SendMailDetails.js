@@ -34,8 +34,8 @@ const SendMailDetails = () => {
                 <input className={"add-receivers-submit"} type="submit" value="Dodaj" />
             </form>
             <form className={"email-body"}>
-                <textarea rows={25}></textarea>
-                <input type={"submit"} value={"Wyślij"}/>
+                <textarea className={"email-body-text"} rows={25}></textarea>
+                <input className={"email-body-button"} type={"submit"} value={"Wyślij"}/>
             </form>
         </div>
     );
