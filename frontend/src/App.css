@@ -557,6 +557,7 @@ footer ul li {
     margin: 3px 4px 0 3px;
     border-radius: 23px;
     list-style: none;
+    cursor: default;
 }
 
 .send-mail-nav ul li:hover {
@@ -570,6 +571,7 @@ footer ul li {
     padding: 0 3px 0 3px;
     top: -3px;
     z-index: 2;
+    cursor: pointer;
 }
 
 .add-receivers {

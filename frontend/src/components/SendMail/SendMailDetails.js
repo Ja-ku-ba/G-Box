@@ -14,13 +14,17 @@ const SendMailDetails = () => {
         e.target.reset();
     };
 
+    const deleteFromList = (person) => {
+        setSendTo(sendTo.filter((e) => e !== person))
+    }
+
     return (
         <div className="send-mail-nav">
             <ul>
                 {sendTo.map((person, index) => (
                     <li key={index}>
                         <span>{person}</span>
-                        <i className={"delete-person"}></i>
+                        <i onClick={() => deleteFromList(person)} className={"delete-person"}></i>
                     </li>
                 ))}
             </ul>
