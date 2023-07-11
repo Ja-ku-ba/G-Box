@@ -24,9 +24,14 @@ const SendMailDetails = () => {
                     </li>
                 ))}
             </ul>
-            <form onSubmit={handleSubmit}>
-                <input type="email" id="toMail" onChange={(e) => setPerson(e.target.value)}/>
-                <input type="submit" value="Dodaj" />
+            <form className={"add-receivers"} onSubmit={handleSubmit}>
+                <input className={"add-receivers-input"} type="email" id="toMail"
+                       onChange={(e) => setPerson(e.target.value)} placeholder={"Dodaj odbiorców"}/>
+                <input className={"add-receivers-submit"} type="submit" value="Dodaj" />
+            </form>
+            <form className={"email-body"}>
+                <textarea rows={25}></textarea>
+                <input type={"submit"} value={"Wyślij"}/>
             </form>
         </div>
     );

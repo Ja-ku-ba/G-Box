@@ -536,24 +536,27 @@ footer ul li {
     list-style: none;
     background-color: var(--color-search);
     border-radius: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
 }
 
 .send-mail-nav ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
-
+    justify-content: flex-start;
+    width: 95%;
+    margin: auto;
+    padding: 0;
 }
 
 .send-mail-nav ul li {
+    display: flex;
     padding: 3px 0 3px 10px;
     background-color: var(--color-main);
     color: var(--color-nav);
-    display: flex;
-    justify-content: space-between;
-    margin: 3px auto;
+    margin: 3px 4px 0 3px;
     border-radius: 23px;
-    text-align: left;
+    list-style: none;
 }
 
 .send-mail-nav ul li:hover {
@@ -567,4 +570,41 @@ footer ul li {
     padding: 0 3px 0 3px;
     top: -3px;
     z-index: 2;
+}
+
+.add-receivers {
+    width: 95%;
+    margin: auto;
+    height: 50px;
+    padding: 15px;
+}
+
+.add-receivers-input {
+    width: calc(80% - 2px);
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid var(--color-nav);
+    padding: 0 3px;
+}
+
+.add-receivers-submit {
+    pointer-events: bounding-box;
+    cursor: pointer;
+    width: calc(20% - 6px);
+    height: 32px;
+    border: 1px solid var(--color-nav);
+    color: white;
+    background-color: var(--color-main);
+    border-radius: 0 5px 5px 0;
+    position: relative;
+    left: -1px;
+    top: -2px;
+}
+
+.email-body {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
 }
