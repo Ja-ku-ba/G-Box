@@ -610,6 +610,14 @@ footer ul li {
     top: -2px;
 }
 
+.subject {
+    height: 30px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-nav);
+    border-radius: 5px;
+    font-size: 20px;
+}
+
 .email-body {
     display: flex;
     flex-direction: column;

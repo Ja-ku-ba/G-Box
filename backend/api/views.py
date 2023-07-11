@@ -76,10 +76,9 @@ def get_target_mail(request, pk):
 @api_view(["POST"])
 @parser_classes([JSONParser])
 def send(request):
-    to_emails = [request.data.get("to_emails")]
+    to_emails = request.data.get("to_emails")
     subject = request.data.get("subject")
     text = request.data.get("text")
-
     send_mail(to_emails=to_emails, subject=subject, text=text)
 
     return Response(status=status.HTTP_200_OK)
