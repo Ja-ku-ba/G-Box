@@ -323,6 +323,7 @@ nav .searchbar input {
     display: block;
     z-index: 0;
     height: calc(100vh - 64px);
+    top: 64px;
 }
 
 .nav-hamburger {
@@ -422,6 +423,13 @@ footer ul li {
 .mail-info {
     padding: 5px;
     margin: 0 0 0 10px;
+}
+
+.no-content-msg {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 /* end mail list */
 
