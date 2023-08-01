@@ -8,7 +8,7 @@ from . import views
 from .views import MyTokenObtainPairView
 
 urlpatterns = [
-    path('login/', views.login_user),
+    path('login/', views.login),
     path('inbox/<str:filter>', views.emails),
     path('send/', views.send),
     path('mail/<str:pk>', views.get_target_mail),

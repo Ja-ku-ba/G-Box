@@ -31,6 +31,7 @@ def get_inbox(filter):
                 html_body = part.get_payload(decode=True)
                 email_data["html_body"] = html_body.decode()
         my_messages.append(email_data)
+    mail.logout()
     return my_messages
 
 

@@ -1,9 +1,8 @@
 import imaplib
-import os
 
 from rest_framework import status
 
-def login(email, password):
+def login_user(email, password):
     mail = imaplib.IMAP4_SSL('imap.gmail.com')
     try:
         mail.login(email, password)

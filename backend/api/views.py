@@ -13,17 +13,17 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from Ebox.inbox import get_inbox
 from Ebox.send import send_mail
-from Ebox.login import login
+from Ebox.login import login_user
 from Ebox.mail import get_mail
 
 # Create your views here.
 @api_view(["POST"])
 @parser_classes([JSONParser])
-def login_user(request):
+def login(request):
     username = request.data.get("username")
     code = request.data.get("password")
-    response = login(username, code)
-    
+    response = login_user(username, code)
+
     if response == 200:
         try:
             user = User.objects.get(username = username)

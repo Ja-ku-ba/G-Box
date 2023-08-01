@@ -12,15 +12,16 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
     const [showSidebar, setShowSidebar] = useState(false);
+    const [status, setStatus] = useState(false);
 
     return (
         <Router>
             <AuthProvider>
                 <div className="App">
-                    <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+                    <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} status={status}/>
                     <Routes>
                         {/* if conditions in <PrivateRoute/> are not met, then redirects you to login page */}
-                        <Route element={<Login/>} path={"/login"} exact/>
+                        <Route element={<Login setStatus={setStatus}/>} path={"/login"} exact/>
                         <Route element={<PrivateRoute/>}>
                             <Route path="/" element={<MailsList showSidebar={showSidebar} />} exact />
                             <Route path="/mail/:id" element={<MailView showSidebar={showSidebar} />} exact />

@@ -9,7 +9,7 @@ const Sidebar = ({showSidebar, setShowSidebar}) => {
   }
   return (
     <div className="sideside Sidebar">
-      <button onClick={ display } type="button">
+      <button onClick={ display } className="nav-hamburger" type="button">
         &#9776;
       </button>
       <div className="sidebar-container">{isShown && <SideFilters />}</div>
