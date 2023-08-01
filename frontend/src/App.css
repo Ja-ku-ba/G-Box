@@ -128,9 +128,8 @@ a {
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-
+    
     margin-top: 25px;
-    /*bottom: 100%;*/
     left: 50%;
     margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
 
@@ -340,6 +339,7 @@ nav .searchbar input {
     width: auto;
     list-style: none;
     padding: 5px;
+    cursor: pointer;
 }
 
 .sidebar li:hover {
