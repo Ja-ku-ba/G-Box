@@ -50,7 +50,12 @@ def login(request):
                 },
                 status=status.HTTP_200_OK
             )
-    return Response(status=status.HTTP_400_BAD_REQUEST)
+    return Response(
+        {
+            "access": "NO_USER"
+        },
+        status=status.HTTP_400_BAD_REQUEST
+    )
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
