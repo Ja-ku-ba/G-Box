@@ -52,7 +52,10 @@ export const AuthProvider = ({ children }) => {
     };
 
     const updateToken = async () => {
+<<<<<<< HEAD
         console.log(authTokens, '------------')
+=======
+>>>>>>> main
         if (authTokens) {
             const response = await fetch("/token/refresh/", {
                 method: "POST",
@@ -63,7 +66,6 @@ export const AuthProvider = ({ children }) => {
 
             });
             const data = await response.json();
-            console.log(data)
 
             if (response.status === 200) {
                 setAuthTokens(data);

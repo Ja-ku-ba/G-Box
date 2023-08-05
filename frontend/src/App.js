@@ -23,7 +23,7 @@ function App() {
                         {/* if conditions in <PrivateRoute/> are not met, then redirects you to login page */}
                         <Route element={<Login setStatus={setStatus}/>} path={"/login"} exact/>
                         <Route element={<PrivateRoute/>}>
-                            <Route path="/" element={<MailsList showSidebar={showSidebar} />} exact />
+                            <Route path="/:filter" element={<MailsList showSidebar={showSidebar} />} exact />
                             <Route path="/mail/:id" element={<MailView showSidebar={showSidebar} />} exact />
                         </Route>
                     </Routes>

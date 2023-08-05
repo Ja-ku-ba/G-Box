@@ -128,9 +128,8 @@ a {
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-
+    
     margin-top: 25px;
-    /*bottom: 100%;*/
     left: 50%;
     margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
 
@@ -324,6 +323,7 @@ nav .searchbar input {
     display: block;
     z-index: 0;
     height: calc(100vh - 64px);
+    top: 64px;
 }
 
 .nav-hamburger {
@@ -340,6 +340,7 @@ nav .searchbar input {
     width: auto;
     list-style: none;
     padding: 5px;
+    cursor: pointer;
 }
 
 .sidebar li:hover {
@@ -422,6 +423,13 @@ footer ul li {
 .mail-info {
     padding: 5px;
     margin: 0 0 0 10px;
+}
+
+.no-content-msg {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 /* end mail list */
 
