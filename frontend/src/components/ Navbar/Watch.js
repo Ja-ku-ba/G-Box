@@ -28,9 +28,9 @@ const Watch = () => {
   }, []);
 
   return (
-    <span to={"/inbox/ALL"} className="clock">
+    <div className="clock">
       {date.toString()}
-    </span>
+    </div>
   );
 };
 

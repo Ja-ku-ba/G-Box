@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
             setAuthTokens(data);
             setUser(jwt_decode(data.access));
             localStorage.setItem("authTokens", JSON.stringify(data));
-            navigate("/");
+            navigate("/ALL");
         } else {
             alert("Coś poszło nie tak, sprawdź dane i spróbuj ponownie");
         }
@@ -52,10 +52,6 @@ export const AuthProvider = ({ children }) => {
     };
 
     const updateToken = async () => {
-<<<<<<< HEAD
-        console.log(authTokens, '------------')
-=======
->>>>>>> main
         if (authTokens) {
             const response = await fetch("/token/refresh/", {
                 method: "POST",
