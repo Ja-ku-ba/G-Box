@@ -25,7 +25,7 @@ const Watch = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  });
 
   return (
     <div className="clock">

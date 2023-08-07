@@ -12,29 +12,34 @@ password = os.environ["EMAIL_SENDER_PASSWORD"]
         # <li onClick={(e) => redirect(e)} id="DRAFT">Wersje robocze</li>
         # <li onClick={(e) => redirect(e)} id="DELETED">Kosz</li>
         # <li onClick={(e) => redirect(e)} id="SPAM">Spam</li>
-def get_inbox(filter):
+def get_inbox(filter, ):
     mail = imaplib.IMAP4_SSL(host)
     mail.login(username, password)
-    print(filter, "9876e5467890")
     if filter == "FLAGGED":
-        print('eringiotenklbg0942j')
         mail.select("inbox")
         status, search_data = mail.search(None, filter)
 
     else:
-        if filter == "ALL":
+        if filter == "ALL":        
             mail.select("[Gmail]/Wszystkie")
-        elif filter == "DRAFT":
+            status, search_data = mail.search(None, "All")
+        elif filter == "DRAFT":        
             mail.select("[Gmail]/Drafts")
-        elif filter == "SENT":
+            status, search_data = mail.search(None, "All")
+        elif filter == "SENT":        
             mail.select("[Gmail]/Wys&AUI-ane")
-        elif filter == "DELETED":
+            status, search_data = mail.search(None, "All")
+        elif filter == "DELETED":        
             mail.select("[Gmail]/Kosz")
-        elif filter == "SPAM":
+            status, search_data = mail.search(None, "All")
+        elif filter == "SPAM":        
             mail.select("[Gmail]/Spam")
+            status, search_data = mail.search(None, "All")
         else:
             mail.select("inbox")
-        status, search_data = mail.search(None, "All")
+            status, search_data = mail.search(None, filter)
+
+    print(filter, "------------")
 
     my_messages = []
     if status == "OK":
@@ -56,4 +61,5 @@ def get_inbox(filter):
             my_messages.append(email_data)
 
     mail.logout()
+    # print(my_messages, "00--------")
     return my_messages

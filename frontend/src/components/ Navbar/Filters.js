@@ -1,6 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 function Filters() {
+  const navigate = useNavigate();
+
+  const handleFilters = async (e) => {
+    e.preventDefault();
+    const filter = '(OR (TO "wulfrykpierozek@gmail.com") (FROM "wulfrykpierozek@gmail.com"))';
+    navigate(`/${filter}`);
+  };
+
+
   return (
-    <form className={"searchbar-filters"}>
+    <form className={"searchbar-filters"} onSubmit={() => handleFilters()}>
       <li>
         <ul>
           <label for={"from-messages"}>Od</label>
@@ -50,23 +61,11 @@ function Filters() {
             </div>
           </div>
         </ul>
-        {/*<ul>*/}
-        {/*  <label htmlFor={"date-messages"}>Zakres dat</label>*/}
-        {/*  <div>*/}
-        {/*    <label htmlFor="birthday">Od:</label>*/}
-        {/*    <input type="date" id="birthday" name="birthday" />*/}
-        {/*  </div>*/}
-        {/*  <div>*/}
-        {/*    <label htmlFor="birthday">Do:</label>*/}
-        {/*    <input type="date" id="birthday" name="birthday" />*/}
-        {/*  </div>*/}
-        {/*  <input type={"text"} id={"date-messages"} />*/}
-        {/*</ul>*/}
       </li>
       <input
+      style={{color: "red"}}
         className={"search-bar-submit"}
         type={"submit"}
-        placeholder="Szukaj"
       />
     </form>
   );
