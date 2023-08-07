@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 function Filters() {
   const navigate = useNavigate();
 
-  const handleFilters = async (e) => {
-    e.preventDefault();
-    const filter = '(OR (TO "wulfrykpierozek@gmail.com") (FROM "wulfrykpierozek@gmail.com"))';
+  const handleFilters = async () => {
+    // e.preventDefault();
+    const filter = '(FROM "wulfrykpierozek@gmail.com")';
     navigate(`/${filter}`);
+    // window.location.reload(true);
   };
 
 

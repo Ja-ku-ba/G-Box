@@ -232,6 +232,7 @@ nav .searchbar input {
     position: relative;
     left: -10px;
     white-space: nowrap;
+    cursor: pointer;
 }
 .filter-container {
     display: flex;
