@@ -12,7 +12,7 @@ password = os.environ["EMAIL_SENDER_PASSWORD"]
         # <li onClick={(e) => redirect(e)} id="DRAFT">Wersje robocze</li>
         # <li onClick={(e) => redirect(e)} id="DELETED">Kosz</li>
         # <li onClick={(e) => redirect(e)} id="SPAM">Spam</li>
-def get_inbox(filter, ):
+def get_inbox(filter):
     mail = imaplib.IMAP4_SSL(host)
     mail.login(username, password)
     if filter == "FLAGGED":
@@ -39,8 +39,6 @@ def get_inbox(filter, ):
             mail.select("inbox")
             status, search_data = mail.search(None, filter)
 
-    print(filter, "------------")
-
     my_messages = []
     if status == "OK":
         for num in search_data[0].split():
@@ -61,5 +59,4 @@ def get_inbox(filter, ):
             my_messages.append(email_data)
 
     mail.logout()
-    # print(my_messages, "00--------")
     return my_messages

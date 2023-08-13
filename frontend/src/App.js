@@ -22,10 +22,10 @@ function App() {
                     <Routes>
                         {/* if conditions in <PrivateRoute/> are not met, then redirects you to login page */}
                         <Route element={<PrivateRoute/>}>
-                            <Route path="/:filter" element={<MailsList showSidebar={showSidebar} />} />
+                            <Route path="/:filter/:query?" element={<MailsList showSidebar={showSidebar} />} />
                             <Route path="/mail/:id" element={<MailView showSidebar={showSidebar} />} />
                             {/* <Route path="/"></Route> allows you to use Private ROtes */}
-                            <Route path="/"></Route>
+                            <Route path="/" exact></Route>
                         </Route>
                         <Route element={<Login setStatus={setStatus}/>} path={"/login"}/>
 

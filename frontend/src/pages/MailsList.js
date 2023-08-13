@@ -4,22 +4,24 @@ import { useParams } from "react-router-dom";
 import MailsListItem from "../components/MailsList/MailsListItem";
 import LoadingAnimation from "../components/LoadingAnimation";
 const MailsList = ({ showSidebar }) => {
-  const { filter } = useParams();
+  const { filter, query } = useParams();
   const [mails, setMails] = useState([]);
   const [loaded, setLoaded] = useState(false)
-  useEffect(() => {
-    getMails();
-  }, []);
+  
   const getMails = async () => {
     try {
-      const response = await fetch(`/inbox/${filter}`);
+      const response = await fetch(`/inbox/${filter}/${encodeURIComponent(query)}`);
       const data = await response.json();
       setMails(data.reverse());
-      setLoaded(true)
+      setLoaded(true);
     } catch (error) {
       alert(`Error fetching mails: ${error}`);
     }
   };
+  
+  useEffect(() => {
+    getMails();
+  }, []);
 
   return (
       <div

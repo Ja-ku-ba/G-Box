@@ -69,8 +69,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 @api_view(["GET"])
-def emails(request, filter):    
+def emails(request, filter, query): 
     response = get_inbox(filter)
+    print(filter, query, "-------------")
     return Response(response)
 
 @api_view(["GET"])
