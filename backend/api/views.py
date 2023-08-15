@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 
-from rest_framework.decorators import api_view, parser_classes
+from rest_framework.decorators import api_view, parser_classes, permission_classes
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from rest_framework import status
@@ -69,9 +69,12 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 @api_view(["GET"])
-def emails(request, filter, query): 
+# @permission_classes(["AllowAny"])
+def emails(request, filter, query=""): 
     response = get_inbox(filter)
-    print(filter, query, "-------------")
+    print(dir(query), "ok")
+    print(request.query_params)
+    print(dir(request))
     return Response(response)
 
 @api_view(["GET"])

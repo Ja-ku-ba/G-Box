@@ -11,11 +11,13 @@ function Filters() {
     const { id, value } = e.target;
     setQuery((prevQuery) => ({ ...prevQuery, [id]: value }));
   };
+  console.log(query)
 
+  // if user write something into url, and then set filters, error will ocure
   const handleFilters = (e) => {
     e.preventDefault();
     setSearchParams(query);
-    navigate(`/ALL/${window.location.search}`);
+    navigate(`/ALL/${window.location.search}`)
     window.location.reload()
   };
 

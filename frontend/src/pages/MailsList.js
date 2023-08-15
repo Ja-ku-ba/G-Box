@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import MailsListItem from "../components/MailsList/MailsListItem";
 import LoadingAnimation from "../components/LoadingAnimation";
 const MailsList = ({ showSidebar }) => {
-  const { filter, query } = useParams();
   const [mails, setMails] = useState([]);
   const [loaded, setLoaded] = useState(false)
-  
+
   const getMails = async () => {
     try {
-      const response = await fetch(`/inbox/${filter}/${encodeURIComponent(query)}`);
+      let query = window.location.search
+      let response
+      console.log(query)
+      if (query.length !== 0){
+        response = await fetch(`/inbox/ALL/results=${query}`);
+      }
+      else{
+        response = await fetch(`/inbox/ALL`);
+      }
       const data = await response.json();
       setMails(data.reverse());
       setLoaded(true);
