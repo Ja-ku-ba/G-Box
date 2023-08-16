@@ -71,10 +71,11 @@ class MyTokenObtainPairView(TokenObtainPairView):
 @api_view(["GET"])
 # @permission_classes(["AllowAny"])
 def emails(request, filter, query=""): 
-    response = get_inbox(filter)
-    print(dir(query), "ok")
-    print(request.query_params)
-    print(dir(request))
+    query = request.query_params
+    print(query)
+    print("Response wejscie")
+    response = get_inbox(filter, query)
+    print("Response wyjscie")
     return Response(response)
 
 @api_view(["GET"])
