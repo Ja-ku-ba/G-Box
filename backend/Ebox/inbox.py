@@ -47,28 +47,25 @@ def get_inbox(filter, query=None):
     b'(\\HasNoChildren \\Sent) "/" "[Gmail]/Wys&AUI-ane"'
     """
 
-    if filter == "ALL":        
-        print(mail.select('"[Gmail]/Wszystkie"'))
-        status, search_data = mail.search(None, "ALL")
-    elif filter == "DRAFT":     
-        print(mail.select('"[Gmail]/Wersje robocze"'))
+    if filter == "DRAFT":     
+        mail.select('"[Gmail]/Wersje robocze"')
         status, search_data = mail.search(None, "All")
     elif filter == "SENT":      
-        print(mail.select('"[Gmail]/Wys&AUI-ane"'))
+        mail.select('"[Gmail]/Wys&AUI-ane"')
         status, search_data = mail.search(None, "All")
     elif filter == "FLAGGED":    
-        print( print(mail.select('"[Gmail]/Wa&AXw-ne"')))
+        print( mail.select('"[Gmail]/Oznaczone gwiazdk&AQU-"'))
         status, search_data = mail.search(None, "ALL")
     elif filter == "DELETED":        
-        print(mail.select("[Gmail]/Kosz"))
+        mail.select('"[Gmail]/Kosz"')
         status, search_data = mail.search(None, "All")
     elif filter == "SPAM":       
-        print(mail.select("[Gmail]/Spam"))
+        mail.select('"[Gmail]/Spam"')
         status, search_data = mail.search(None, "All")
     else:
-        print("Nie tym razem")
-        return []
-    
+        mail.select('"[Gmail]/Wszystkie"')
+        status, search_data = mail.search(None, "ALL")
+
     print("Wybieranie filtrów koniec\n")
 
     print("Reszta")
