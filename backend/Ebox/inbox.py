@@ -6,19 +6,13 @@ host = 'imap.gmail.com'
 username = "szopowsky@gmail.com"
 
 password = os.environ["EMAIL_SENDER_PASSWORD"]
-        # <li onClick={(e) => redirect(e)} id="ALL">Odebrane</li>
-        # <li onClick={(e) => redirect(e)} id="FLAGGED">Oznaczone gwiazdką</li>
-        # <li onClick={(e) => redirect(e)} id="SENT">Wysłane</li>
-        # <li onClick={(e) => redirect(e)} id="DRAFT">Wersje robocze</li>
-        # <li onClick={(e) => redirect(e)} id="DELETED">Kosz</li>
-        # <li onClick={(e) => redirect(e)} id="SPAM">Spam</li>
-
+        
 def process_query_to_rf3501(query):
     # try to use imap tools, then use query builder
     pass
 
 def get_inbox(filter, query=None):
-    print("Lączenie start")
+    print("Lączenie start", filter, '-----------')
     mail = imaplib.IMAP4_SSL(host)
     mail.login(username, password)
     print("Łączenie koniec\n")
@@ -30,29 +24,51 @@ def get_inbox(filter, query=None):
     print("Przetwarzanie query koniec\n")
 
     print("Wybireanie filtrów")
-    if filter == "FLAGGED":
-        mail.select("inbox")
-        status, search_data = mail.search(None, filter)
 
+    """
+    b'(\\HasNoChildren) "/" "INBOX"', 
+    b'(\\Noselect \\HasChildren) "/" "[Gmail]"',
+    b'(\\HasNoChildren \\All) "/" "[Gmail]/All Mail"', 
+    b'(\\HasNoChildren \\Drafts) "/" "[Gmail]/Drafts"', 
+    b'(\\HasNoChildren \\Important) "/" "[Gmail]/Important"', 
+    b'(\\HasNoChildren \\Sent) "/" "[Gmail]/Sent Mail"', 
+    b'(\\HasNoChildren \\Junk) "/" "[Gmail]/Spam"', 
+    b'(\\HasNoChildren \\Flagged) "/" "[Gmail]/Starred"', 
+    b'(\\HasNoChildren \\Trash) "/" "[Gmail]/Trash"'
+
+    b'(\\HasNoChildren) "/" "INBOX"'
+    b'(\\HasChildren \\Noselect) "/" "[Gmail]"'
+    b'(\\HasNoChildren \\Trash) "/" "[Gmail]/Kosz"'
+    b'(\\Flagged \\HasNoChildren) "/" "[Gmail]/Oznaczone gwiazdk&AQU-"'
+    b'(\\HasNoChildren \\Junk) "/" "[Gmail]/Spam"'
+    b'(\\HasNoChildren \\Important) "/" "[Gmail]/Wa&AXw-ne"'
+    b'(\\Drafts \\HasNoChildren) "/" "[Gmail]/Wersje robocze"'
+    b'(\\All \\HasNoChildren) "/" "[Gmail]/Wszystkie"'
+    b'(\\HasNoChildren \\Sent) "/" "[Gmail]/Wys&AUI-ane"'
+    """
+
+    if filter == "ALL":        
+        print(mail.select('"[Gmail]/Wszystkie"'))
+        status, search_data = mail.search(None, "ALL")
+    elif filter == "DRAFT":     
+        print(mail.select('"[Gmail]/Wersje robocze"'))
+        status, search_data = mail.search(None, "All")
+    elif filter == "SENT":      
+        print(mail.select('"[Gmail]/Wys&AUI-ane"'))
+        status, search_data = mail.search(None, "All")
+    elif filter == "FLAGGED":    
+        print( print(mail.select('"[Gmail]/Wa&AXw-ne"')))
+        status, search_data = mail.search(None, "ALL")
+    elif filter == "DELETED":        
+        print(mail.select("[Gmail]/Kosz"))
+        status, search_data = mail.search(None, "All")
+    elif filter == "SPAM":       
+        print(mail.select("[Gmail]/Spam"))
+        status, search_data = mail.search(None, "All")
     else:
-        if filter == "ALL":        
-            mail.select("[Gmail]/Wszystkie")
-            status, search_data = mail.search(None, "ALL")
-        elif filter == "DRAFT":        
-            mail.select("[Gmail]/Drafts")
-            status, search_data = mail.search(None, "All")
-        elif filter == "SENT":        
-            mail.select("[Gmail]/Wys&AUI-ane")
-            status, search_data = mail.search(None, "All")
-        elif filter == "DELETED":        
-            mail.select("[Gmail]/Kosz")
-            status, search_data = mail.search(None, "All")
-        elif filter == "SPAM":        
-            mail.select("[Gmail]/Spam")
-            status, search_data = mail.search(None, "All")
-        else:
-            mail.select("inbox")
-            status, search_data = mail.search(None, filter)
+        print("Nie tym razem")
+        return []
+    
     print("Wybieranie filtrów koniec\n")
 
     print("Reszta")
@@ -60,7 +76,6 @@ def get_inbox(filter, query=None):
     if status == "OK":
         print(search_data[0].split())
         for num in search_data[0].split():
-            print(num)
             email_data = {}
             email_data['index'] = str(num)[2:-1]
             _, data = mail.fetch(num, '(RFC822)')
@@ -79,6 +94,7 @@ def get_inbox(filter, query=None):
     print("Reszta koniec")
 
     print("Wylogowanie")
+    mail.close()
     mail.logout()
     print("Wylogowanie  koniec")
     return my_messages
