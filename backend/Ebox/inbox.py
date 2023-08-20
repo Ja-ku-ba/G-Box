@@ -1,15 +1,32 @@
-import imaplib
-import email
-import os
+import imaplib, email, os, imap_tools
+from imap_tools import A, AND, OR, NOT, MailBox
+
 
 host = 'imap.gmail.com'
 username = "szopowsky@gmail.com"
 
 password = os.environ["EMAIL_SENDER_PASSWORD"]
         
+# https://github.com/ikvk/imap_tools/blob/master/examples/search.py
 def process_query_to_rf3501(query):
-    # try to use imap tools, then use query builder
-    pass
+    print(query.items(), type(query), dir(query))
+    print("==============================")
+    q = ""
+    if query["from"]:
+        q = A(from_=[query["from"]])
+    elif query["to"]:
+        print("voentibwn")
+    elif query["subject"]:
+        print("voentibwn")
+    elif query["contains"]:
+        print("voeintb")
+    elif query["contains"]:
+        print("voeintb")
+    elif query["exclude"]:
+        print("voeintb")
+        
+
+    return q
 
 def get_inbox(filter, query=None):
     print("Lączenie start", filter, '-----------')
@@ -18,38 +35,16 @@ def get_inbox(filter, query=None):
     print("Łączenie koniec\n")
 
     print("Przetwarzanie query")
-    rf3501 = ""
+    rf3501 = "All"
     if query is not None:
         rf3501 = process_query_to_rf3501(query)
     print("Przetwarzanie query koniec\n")
 
     print("Wybireanie filtrów")
 
-    """
-    b'(\\HasNoChildren) "/" "INBOX"', 
-    b'(\\Noselect \\HasChildren) "/" "[Gmail]"',
-    b'(\\HasNoChildren \\All) "/" "[Gmail]/All Mail"', 
-    b'(\\HasNoChildren \\Drafts) "/" "[Gmail]/Drafts"', 
-    b'(\\HasNoChildren \\Important) "/" "[Gmail]/Important"', 
-    b'(\\HasNoChildren \\Sent) "/" "[Gmail]/Sent Mail"', 
-    b'(\\HasNoChildren \\Junk) "/" "[Gmail]/Spam"', 
-    b'(\\HasNoChildren \\Flagged) "/" "[Gmail]/Starred"', 
-    b'(\\HasNoChildren \\Trash) "/" "[Gmail]/Trash"'
-
-    b'(\\HasNoChildren) "/" "INBOX"'
-    b'(\\HasChildren \\Noselect) "/" "[Gmail]"'
-    b'(\\HasNoChildren \\Trash) "/" "[Gmail]/Kosz"'
-    b'(\\Flagged \\HasNoChildren) "/" "[Gmail]/Oznaczone gwiazdk&AQU-"'
-    b'(\\HasNoChildren \\Junk) "/" "[Gmail]/Spam"'
-    b'(\\HasNoChildren \\Important) "/" "[Gmail]/Wa&AXw-ne"'
-    b'(\\Drafts \\HasNoChildren) "/" "[Gmail]/Wersje robocze"'
-    b'(\\All \\HasNoChildren) "/" "[Gmail]/Wszystkie"'
-    b'(\\HasNoChildren \\Sent) "/" "[Gmail]/Wys&AUI-ane"'
-    """
-
     if filter == "DRAFT":     
         mail.select('"[Gmail]/Wersje robocze"')
-        status, search_data = mail.search(None, "All")
+        status, search_data = mail.search(None, "All", rf3501)
     elif filter == "SENT":      
         mail.select('"[Gmail]/Wys&AUI-ane"')
         status, search_data = mail.search(None, "All")
@@ -64,7 +59,7 @@ def get_inbox(filter, query=None):
         status, search_data = mail.search(None, "All")
     else:
         mail.select('"[Gmail]/Wszystkie"')
-        status, search_data = mail.search(None, "ALL")
+        status, search_data = mail.search(None, rf3501)
 
     print("Wybieranie filtrów koniec\n")
 
