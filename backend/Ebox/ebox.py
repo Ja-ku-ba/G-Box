@@ -39,13 +39,16 @@ class Mails(Authenticate):
         return r
     
     def get_mail(self, id):
-        return next(self.mailbox.fetch(A(uid=f"{id}")))
+        mail =  next(self.mailbox.fetch(A(uid=f"{id}")))
+        if mail.html:
+            return {
+                "headers": mail.headers,
+                "html_body": mail.html  
+            }
+        else: 
+            return {
+                "headers": mail.headers,
+                "body": mail.text,
+            }
 
-cos = Mails()
-cos.login()
-# w = (cos.get_headers("All"))
-# print(w)
 
-ten = (cos.get_mail(11))
-print(dir(ten), 3)
-print(ten)
