@@ -18,7 +18,6 @@ const MailView = ({showSidebar}) => {
     }, [id]);
 
     const getMail = async () => {
-        if (id === 'new') return;
         try {
             const response = await fetch(`/mail/${id}`);
             if (response.ok) {
@@ -43,8 +42,9 @@ const MailView = ({showSidebar}) => {
     };
 
     const getSubject = (subject) => {
-        const encodedHeader = subject.replace(/\?=/g, '').replace(/=\?UTF-8\?Q\?/g, '');
-        return encodedHeader.replace(/=([A-F0-9]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+        // const encodedHeader = subject.replace(/\?=/g, '').replace(/=\?UTF-8\?Q\?/g, '');
+        // return encodedHeader.replace(/=([A-F0-9]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+        return subject;
     };
 
     const getProperFormat = (data) => {
@@ -59,7 +59,7 @@ const MailView = ({showSidebar}) => {
         >
             <div className={"round-corners"}>
                 <div className="mail-nav">
-                    <Link to={"/"}>
+                    <Link to={"/ALL"}>
                         <button type="button" className={"tooltip"}>
                             <img src={arrowLeft} alt="ArrowLeft" className="mail-nav-icons" height="20px" width="20px" />
                             <span className="tooltiptext">Wyjdź</span>
@@ -79,10 +79,10 @@ const MailView = ({showSidebar}) => {
 
                 {mail ? (
                     <div className={"mail-info"}>
-                        <h1 className={"mail-subject"}>{getSubject(mail.subject)}</h1>
+                        <h1 className={"mail-subject"}>{mail.subject}</h1>
                         <div className={"mail-delivery-info"}>
-                            <span>{getProperFormat(mail.from)}</span>
-                            <span>{getDate(mail.date)}</span>
+                            <span>{mail.headers.from}</span>
+                            <span>{mail.date}</span>
                         </div>
                         <div>
                             {mail.html_body ? <div dangerouslySetInnerHTML={{ __html: mail.html_body }}></div> : mail.body}
