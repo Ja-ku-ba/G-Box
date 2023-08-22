@@ -23,7 +23,7 @@ class Mails(Authenticate):
                     {
                         'uid': e.uid,
                         'from': e.from_,
-                        'date': e.date,
+                        'date': e.date_str,
                         'subject': f'{e.subject[:50]}...',
                      }
                 )
@@ -32,7 +32,7 @@ class Mails(Authenticate):
                     {
                         'uid': e.uid,
                         'from': e.from_,
-                        'date': e.date,
+                        'date': e.date_str,
                         'subject': f'{e.text[:50]}...'
                      }
                 )

@@ -43,8 +43,7 @@ const MailsList = ({ showSidebar }) => {
         {mails.length > 0 ? (
             <div className={"round-corners"}>
               {mails.map((mail) => (
-
-                  <MailsListItem key={mail.index} mail={mail} />
+                  <MailsListItem key={mail.uid} mail={mail} />
               ))}
             </div>
         ) : !loaded ? 
