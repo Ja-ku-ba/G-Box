@@ -71,11 +71,10 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 @api_view(["GET"])
-# @permission_classes(["AllowAny"])
 def emails(request, filter, query=""):
     process = Mails()
     process.login()
-    return Response(process.get_headers(filter))
+    return Response(process.get_headers(filter, request.query_params))
 
 @api_view(["GET"])
 def get_target_mail(request, pk):

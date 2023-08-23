@@ -32,25 +32,6 @@ const MailView = ({showSidebar}) => {
         }
     };
 
-    const getDate = (date) => {
-        const newDate = new Date(date);
-        const day = newDate.getDate().toString().padStart(2, '0');
-        const month = (newDate.getMonth() + 1).toString().padStart(2, '0');
-        const year = newDate.getFullYear();
-        const time = `${newDate.getHours()}:${newDate.getMinutes()}`;
-        return `${time} ${day}.${month}.${year}`;
-    };
-
-    const getSubject = (subject) => {
-        // const encodedHeader = subject.replace(/\?=/g, '').replace(/=\?UTF-8\?Q\?/g, '');
-        // return encodedHeader.replace(/=([A-F0-9]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
-        return subject;
-    };
-
-    const getProperFormat = (data) => {
-        return decodeURIComponent(data.replace(/=([a-fA-F0-9]{2})/g));
-    };
-
     return (
         <div
             className={`mail-list-container ${
