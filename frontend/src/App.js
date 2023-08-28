@@ -8,6 +8,7 @@ import Footbar from "./components/Footbar";
 import MailsList from "./pages/MailsList";
 import MailView from "./pages/MailView";
 import Login from "./pages/Login";
+import SendMail from "./pages/SendMail";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                         <Route element={<PrivateRoute/>}>
                             <Route path="/:filter/results:query?" element={<MailsList showSidebar={showSidebar} />} />
                             <Route path="/mail/:id" element={<MailView showSidebar={showSidebar} />} />
+                            <Route path="/send" element={<SendMail></SendMail>}/>
                             {/* <Route path="/"></Route> allows you to use Private ROtes */}
                             <Route path="/" exact></Route>
                         </Route>

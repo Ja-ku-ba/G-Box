@@ -526,3 +526,122 @@ footer ul li {
 .how-to-get-code a {
     color: blue;
 }
+
+
+/* Send mail start */
+.send-mail-nav {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    background-color: var(--color-search);
+    border-radius: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+.send-mail-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 95%;
+    margin: auto;
+    padding: 0;
+}
+
+.send-mail-nav ul li {
+    display: flex;
+    padding: 3px 0 3px 10px;
+    background-color: var(--color-main);
+    color: var(--color-nav);
+    margin: 3px 4px 0 3px;
+    border-radius: 23px;
+    list-style: none;
+    cursor: default;
+}
+
+.send-mail-nav ul li:hover {
+    filter: invert(100%);
+}
+
+.delete-person {
+    /* background-image: url("assets/closeX.svg"); */
+    position: relative;
+    width: 30px;
+    padding: 0 3px 0 3px;
+    top: -3px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.add-receivers {
+    width: 95%;
+    margin: auto;
+    height: 50px;
+    padding: 15px;
+}
+
+.add-receivers-input {
+    width: calc(80% - 2px);
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid var(--color-nav);
+    padding: 0 3px;
+}
+
+.add-receivers-submit:active {
+    filter: invert(100%);
+    border: 1px solid var(--color-border);
+}
+
+.add-receivers-submit {
+    pointer-events: bounding-box;
+    cursor: pointer;
+    width: calc(20% - 6px);
+    height: 32px;
+    border: 1px solid var(--color-nav);
+    color: white;
+    background-color: var(--color-main);
+    border-radius: 0 5px 5px 0;
+    position: relative;
+    left: -1px;
+    top: -2px;
+}
+
+.subject {
+    height: 30px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-nav);
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.email-body {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.email-body-text {
+    border-radius: 5px;
+    border: 1px solid var(--color-nav);
+    padding: 7px;
+}
+
+.email-body-button {
+    border-radius: 5px;
+    border: none;
+    color: var(--color-nav);
+    background-color: var(--color-main);
+    width: 30%;
+    height: 35px;
+    margin: 5px auto;
+    cursor: pointer;
+}
+
+.email-body-button:hover {
+    filter: invert(100%);
+    border: 1px solid var(--color-border);
+}
