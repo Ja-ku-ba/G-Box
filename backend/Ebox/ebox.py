@@ -1,6 +1,5 @@
-import os
+import os, email, email.mime as mime, smtplib, pathlib
 from imap_tools import MailBox, A, NOT, AND, OR
-from itertools import chain
 
 class Authenticate():
     def __init__(self) -> None:
@@ -68,7 +67,6 @@ class Mails(Authenticate):
                 "body": mail.text,
             }
         
-
     def query_builder(self,*query):
         q = []
         print(query)
@@ -83,3 +81,44 @@ class Mails(Authenticate):
         if "exclude" in query[0]:
             q.append(OR(no_keyword=query[0]["exclude"]))
         return AND(*q)
+    
+class Send(Authenticate):
+    def __init__(self) -> None:
+        self.username = "szopowsky@gmail.com"
+        self.password = os.environ["EMAIL_SENDER_PASSWORD"]
+
+    def send(self, to_emails, subject, text, from_email="szopowsky@gmail.com", html=None):
+
+        
+        files = []
+        assert isinstance(to_emails, list)
+        
+        msg = mime.multipart.MIMEMultipart()
+        msg["Form"] = self.username
+        msg["To"] = ", ".join(to_emails)
+        msg["Subject"] = subject
+
+        txt_part = mime.text.MIMEText(text, 'plain')
+        msg.attach(txt_part)
+
+        if html != None:
+            html_part = mime.MIMEText(text, '<h1>Hello!</h1>')
+            msg.attach(html_part)
+
+        for path in files:
+            part = mime.base.MIMEBase('application', "octet-stream")
+            with open(path, 'rb') as file:
+                part.set_payload(file.read())
+            email.encoders.encode_base64(part)
+            part.add_header('Content-Disposition',
+                            'attachment; filename={}'.format(pathlib.Path(path).name))
+            msg.attach(part)
+
+        msg_str = msg.as_string()
+        # login to smtp server
+        server = smtplib.SMTP(host="smtp.gmail.com", port = 587)
+        server.ehlo()
+        server.starttls()
+        server.login(self.username, self.password)
+        server.sendmail(from_email, to_emails, msg_str)
+        server.quit()   

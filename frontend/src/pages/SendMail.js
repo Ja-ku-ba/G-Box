@@ -37,7 +37,7 @@ const SendMail = ({ showSidebar }) => {
             })
         })
         if (response.status === 200){
-            navigate("/")
+            navigate("/SENT")
         }
         else {
             alert("Coś poszło nie tak")
