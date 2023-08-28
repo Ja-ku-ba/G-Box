@@ -46,7 +46,7 @@ const SendMail = ({ showSidebar }) => {
     return (
         <div
             className={`mail-list-container ${
-                showSidebar ? "small-sidebar" : "normal-sidebar"
+                showSidebar ? "small-sidebar small-send-page" : "normal-sidebar send-page" 
             }`}
         >
         <div className="send-mail-nav">

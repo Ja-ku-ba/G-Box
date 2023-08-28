@@ -25,7 +25,7 @@ function App() {
                         <Route element={<PrivateRoute/>}>
                             <Route path="/:filter/results:query?" element={<MailsList showSidebar={showSidebar} />} />
                             <Route path="/mail/:id" element={<MailView showSidebar={showSidebar} />} />
-                            <Route path="/send" element={<SendMail></SendMail>}/>
+                            <Route path="/send" element={<SendMail showSidebar={showSidebar}></SendMail>}/>
                             {/* <Route path="/"></Route> allows you to use Private ROtes */}
                             <Route path="/" exact></Route>
                         </Route>
