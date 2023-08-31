@@ -1,17 +1,20 @@
 import os
 from imap_tools import MailBox, A, NOT, AND, OR
-from itertools import chain
+from django.contrib.auth.models import User
 
-class Authenticate():
+
+class AuthenticateUser():
     def __init__(self) -> None:
         self.mailbox = MailBox('imap.gmail.com')
-        self.user_email = "szopowsky@gmail.com"
-        self.passcode = os.environ["EMAIL_SENDER_PASSWORD"]
-    
-    def login(self):
-        return self.mailbox.login(self.user_email, self.passcode)
 
-class Mails(Authenticate):
+    def register(self, user_email, passcode):
+        return self.mailbox.login(user_email, passcode)
+
+    def login(self):
+        user_ = User.objects.get.all().first()
+        return self.mailbox.login(user_.username, user_.password)
+
+class Mails(AuthenticateUser):
     def __init__(self) -> None:
         super().__init__()
 
