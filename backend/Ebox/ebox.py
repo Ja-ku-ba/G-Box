@@ -15,12 +15,16 @@ class Mails(Authenticate):
         super().__init__()
 
     def get_headers(self, filter, query=None):
+        folder_list = self.mailbox.folder.list()
+        for folder in folder_list:
+            print(folder)
         # if user want to see more specific refuts eg.: from_="mail@example.com"
         if query:
             q = self.query_builder(query)
             mails = self.mailbox.fetch(A(filter, q))
         else:
             mails = self.mailbox.fetch(filter)
+            print("------------------------")
 
         r = []
         for e in mails:
@@ -66,10 +70,14 @@ class Mails(Authenticate):
                 "headers": mail.headers,
                 "body": mail.text,
             }
-        
+
+    def filter_builder(self, filter):
+        return 
+
     def query_builder(self,*query):
         q = []
         print(query)
+        q.append(OR(deleted=True))
         if "from" in query[0]:
             q.append(OR(from_=query[0]["from"]))
         if "to" in query[0]:

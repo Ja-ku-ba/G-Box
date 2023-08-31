@@ -9,7 +9,6 @@ const MailsList = ({ showSidebar }) => {
   const {filter} = useParams()
 
   const getMails = async () => {
-    console.log(filter)
     try {
       let query = window.location.search
       let response

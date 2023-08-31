@@ -14,9 +14,10 @@ const SideFilters = () => {
       <ul>
         <li onClick={(e) => redirect(e)} id="ALL">Odebrane</li>
         <li onClick={(e) => redirect(e)} id="FLAGGED">Oznaczone gwiazdką</li>
+        <li onClick={(e) => redirect(e)} id="Important">Ważne</li>
         <li onClick={(e) => redirect(e)} id="SENT">Wysłane</li>
-        <li onClick={(e) => redirect(e)} id="DRAFT">Wersje robocze</li>
-        <li onClick={(e) => redirect(e)} id="DELETED">Kosz</li>
+        <li onClick={(e) => redirect(e)} id="DRAFTS">Wersje robocze</li>
+        <li onClick={(e) => redirect(e)} id="TRASH">Kosz</li>
         <li onClick={(e) => redirect(e)} id="SPAM">Spam</li>
       </ul>
     </div>
