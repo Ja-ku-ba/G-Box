@@ -1,17 +1,20 @@
 import os
-from imap_tools import MailBox, A, NOT, AND, OR
+from imap_tools import MailBox, AND, OR
 from django.contrib.auth.models import User
-
-
+from rest_framework import status
 class AuthenticateUser():
     def __init__(self) -> None:
         self.mailbox = MailBox('imap.gmail.com')
 
     def register(self, user_email, passcode):
-        return self.mailbox.login(user_email, passcode)
-
-    def login(self):
-        user_ = User.objects.get.all().first()
+        try:
+            self.mailbox.login(user_email, passcode)
+            return status.HTTP_200_OK
+        except:
+            return status.HTTP_404_NOT_FOUND
+        
+    def login_user(self):
+        user_ = User.objects.all().first()
         return self.mailbox.login(user_.username, user_.password)
 
 class Mails(AuthenticateUser):
@@ -22,7 +25,7 @@ class Mails(AuthenticateUser):
         # if user want to see more specific refuts eg.: from_="mail@example.com"
         if query:
             q = self.query_builder(query)
-            mails = self.mailbox.fetch(A(filter, q))
+            mails = self.mailbox.fetch(AND(filter, q))
         else:
             mails = self.mailbox.fetch(filter)
 
@@ -59,7 +62,7 @@ class Mails(AuthenticateUser):
         return r
     
     def get_mail(self, id):
-        mail =  next(self.mailbox.fetch(A(uid=f"{id}")))
+        mail =  next(self.mailbox.fetch(AND(uid=f"{id}")))
         if mail.html:
             return {
                 "headers": mail.headers,

@@ -21,9 +21,10 @@ from Ebox.ebox import AuthenticateUser, Mails
 def login(request):
     username = request.data.get("username")
     code = request.data.get("password")
-    process = AuthenticateUser()
-    response = process.register(username, code)
-    if response == 200:
+
+    response = AuthenticateUser().register(username, code)
+
+    if response == status.HTTP_200_OK:
         # user already exists in db
         try:
             user = User.objects.get(username = username)
@@ -77,13 +78,13 @@ class MyTokenObtainPairView(TokenObtainPairView):
 @api_view(["GET"])
 def emails(request, filter, query=""):
     process = Mails()
-    process.login()
+    process.login_user()
     return Response(process.get_headers(filter, request.query_params))
 
 @api_view(["GET"])
 def get_target_mail(request, pk):
     process = Mails()
-    process.login()
+    process.login_user()
     return Response(process.get_mail(pk))
 
 @api_view(["POST"])

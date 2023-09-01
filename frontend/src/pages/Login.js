@@ -11,7 +11,7 @@ const Login = () => {
                 <input type={"text"} id={"email"}/>
             </div>
             <div className={"login-element"}>
-                <label htmlFor={"passcode"}>Kod np:  cfsadqbpuoxsaezo</label>
+                <label htmlFor={"passcode"}>Kod np:  cfsadqbpuoxsaezo , nbmzvfegtjkcukpz , qzmizmerhphdqelg</label>
                 <input  type={"password"} id={"passcode"}/>
                 <div className={"how-to-get-code"}>
                     <small>
