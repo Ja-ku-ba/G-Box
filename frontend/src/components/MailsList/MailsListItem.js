@@ -13,10 +13,20 @@ const MailsListItem = ({ mail }) => {
     });
   };
 
+  const formatMail = ( from ) => {
+    if (from.includes("<") && from.includes(">")){
+      if (from.includes("=?UTF-8?")){
+        return from.match(/<([^>]+)>/).slice(1)
+      }
+      return from.slice(0, from.indexOf("<"))
+    }
+    return from
+  }
+
   return (
     <Link to={`/mail/${mail.uid}`}>
       <div className="mail-list-items">
-        <strong className="mail-info mail-from">{mail.from.length > 20 ? mail.from.slice(0, 20) + "..." : mail.from}</strong>
+        <strong className="mail-info mail-from">{formatMail(mail.from)}</strong>
         <span className="mail-info">{mail.subject.length > 50 ? mail.subject.slice(0, 47) + "..." : mail.subject}</span>
         <span className="mail-list-date">{getTime(mail.date)}</span>
       </div>

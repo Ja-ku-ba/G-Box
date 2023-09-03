@@ -22,7 +22,8 @@ class Mails(Authenticate):
             mails = self.mailbox.fetch(A(filter, q))
         else:
             mails = self.mailbox.fetch(filter)
-
+        import time
+        start=time.time()
         r = []
         for e in mails:
             if e.subject:
@@ -30,7 +31,7 @@ class Mails(Authenticate):
                     r.append(
                         {
                             'uid': e.uid,
-                            'from': e.from_,
+                            'from': e.headers["from"][0],
                             'date': e.date_str,
                             'subject': f'{e.subject[:50]}...',
                          }
@@ -39,7 +40,7 @@ class Mails(Authenticate):
                     r.append(
                         {
                             'uid': e.uid,
-                            'from': e.from_,
+                            'from': e.headers["from"][0],
                             'date': e.date_str,
                             'subject': e.subject,
                          }
@@ -48,11 +49,13 @@ class Mails(Authenticate):
                 r.append(
                     {
                         'uid': e.uid,
-                        'from': e.from_,
+                        'from': e.headers["from"][0],
                         'date': e.date_str,
                         'subject': f'{e.text[:50]}...'
                      }
                 )
+        t2 = time.time()
+        print(t2 - start)
         return r
     
     def get_mail(self, id):
