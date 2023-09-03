@@ -13,7 +13,9 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
                 {/*<button type={"button"} onClick={ () => setShowSidebar(!showSidebar) }>*/}
                     <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
                 {/*</button>*/}
-                <Link to={"/ALL"}><Watch /></Link>
+                <button onClick={() => window.location.reload(true)} className="nav-clock">
+                    <Link to={"/ALL"} ><Watch /></Link>
+                </button>
             </div>
             <div className="navbar-groups searchbar-component">
                 <SearchBar />

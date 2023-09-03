@@ -152,8 +152,14 @@ a {
     z-index: 2;
 }
 
-.clock {
+.nav-clock {
+    height: 48px;
+}
+
+.nav-clock a {
+    font-size: 25px;
     white-space: nowrap;
+    margin: auto;
 }
 
 nav {
@@ -328,8 +334,7 @@ nav .searchbar input {
 }
 
 .nav-hamburger {
-    position: relative;
-    top: -7px;
+    margin: auto 0;
 }
 
 .sidebar {
