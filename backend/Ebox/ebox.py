@@ -1,6 +1,6 @@
 import os
 from imap_tools import MailBox, A, NOT, AND, OR
-from itertools import chain
+from datetime import datetime
 
 class Authenticate():
     def __init__(self) -> None:
@@ -22,8 +22,6 @@ class Mails(Authenticate):
             mails = self.mailbox.fetch(A(filter, q))
         else:
             mails = self.mailbox.fetch(filter)
-        import time
-        start=time.time()
         r = []
         for e in mails:
             if e.subject:
@@ -32,7 +30,7 @@ class Mails(Authenticate):
                         {
                             'uid': e.uid,
                             'from': e.headers["from"][0],
-                            'date': e.date_str,
+                            'date': e.date,
                             'subject': f'{e.subject[:50]}...',
                          }
                     )
@@ -41,7 +39,7 @@ class Mails(Authenticate):
                         {
                             'uid': e.uid,
                             'from': e.headers["from"][0],
-                            'date': e.date_str,
+                            'date': e.date,
                             'subject': e.subject,
                          }
                     )
@@ -50,14 +48,15 @@ class Mails(Authenticate):
                     {
                         'uid': e.uid,
                         'from': e.headers["from"][0],
-                        'date': e.date_str,
+                        'date': e.date,
                         'subject': f'{e.text[:50]}...'
                      }
                 )
-        t2 = time.time()
-        print(t2 - start)
-        return r
-    
+        z = sorted(r, key=lambda x:(x['date']), reverse=True)
+        for e in z:
+            print(e["date"])
+        return sorted(r, key=lambda x:(x['date']), reverse=True)
+
     def get_mail(self, id):
         mail =  next(self.mailbox.fetch(A(uid=f"{id}")))
         if mail.html:

@@ -23,20 +23,12 @@ const MailsList = ({ showSidebar }) => {
       }
       
       const data = await response.json();
-      data.sort(function (a, b) {
-        return a.date > (b.date);
-      })
-      setMails(
-        data
-      );
+      setMails(data);
       setLoaded(true);
     } catch (error) {
       alert(`Error fetching mails: ${error}`);
     }
   };
-  
-
-
 
   useEffect(() => {
     getMails();
