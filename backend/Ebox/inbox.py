@@ -5,42 +5,35 @@ from imap_tools import A, AND, OR, NOT, MailBox
 host = 'imap.gmail.com'
 username = "szopowsky@gmail.com"
 
-password = os.environ["EMAIL_SENDER_PASSWORD"]
-        
+# password = os.environ["EMAIL_SENDER_PASSWORD"]
+password = "cfsadqbpuoxsaezo"
+
 # https://github.com/ikvk/imap_tools/blob/master/examples/search.py
 def process_query_to_rf3501(query):
-    print(query.items(), type(query), dir(query))
-    print("==============================")
     q = ""
     if query["from"]:
         q = A(from_=[query["from"]])
     elif query["to"]:
-        print("voentibwn")
+        pass
     elif query["subject"]:
-        print("voentibwn")
+        pass
     elif query["contains"]:
-        print("voeintb")
+        pass
     elif query["contains"]:
-        print("voeintb")
+        pass
     elif query["exclude"]:
-        print("voeintb")
-        
+        pass
 
     return q
 
 def get_inbox(filter, query=None):
-    print("Lączenie start", filter, '-----------')
     mail = imaplib.IMAP4_SSL(host)
     mail.login(username, password)
-    print("Łączenie koniec\n")
+    print(dir(mail), "----")
 
-    print("Przetwarzanie query")
     rf3501 = "All"
     if query is not None:
         rf3501 = process_query_to_rf3501(query)
-    print("Przetwarzanie query koniec\n")
-
-    print("Wybireanie filtrów")
 
     if filter == "DRAFT":     
         mail.select('"[Gmail]/Wersje robocze"')
@@ -49,7 +42,7 @@ def get_inbox(filter, query=None):
         mail.select('"[Gmail]/Wys&AUI-ane"')
         status, search_data = mail.search(None, "All")
     elif filter == "FLAGGED":    
-        print( mail.select('"[Gmail]/Oznaczone gwiazdk&AQU-"'))
+        # print( mail.select('"[Gmail]/Oznaczone gwiazdk&AQU-"'))
         status, search_data = mail.search(None, "ALL")
     elif filter == "DELETED":        
         mail.select('"[Gmail]/Kosz"')
@@ -61,12 +54,9 @@ def get_inbox(filter, query=None):
         mail.select('"[Gmail]/Wszystkie"')
         status, search_data = mail.search(None, rf3501)
 
-    print("Wybieranie filtrów koniec\n")
 
-    print("Reszta")
     my_messages = []
     if status == "OK":
-        print(search_data[0].split())
         for num in search_data[0].split():
             email_data = {}
             email_data['index'] = str(num)[2:-1]
@@ -83,10 +73,7 @@ def get_inbox(filter, query=None):
                     html_body = part.get_payload(decode=True)
                     email_data["html_body"] = html_body.decode()
             my_messages.append(email_data)
-    print("Reszta koniec")
 
-    print("Wylogowanie")
     mail.close()
     mail.logout()
-    print("Wylogowanie  koniec")
     return my_messages

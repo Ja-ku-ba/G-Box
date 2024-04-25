@@ -6,7 +6,8 @@ class Authenticate():
     def __init__(self) -> None:
         self.mailbox = MailBox('imap.gmail.com')
         self.user_email = "szopowsky@gmail.com"
-        self.passcode = os.environ["EMAIL_SENDER_PASSWORD"]
+        self.passcode = "cfsadqbpuoxsaezo"
+        # self.passcode = os.environ["EMAIL_SENDER_PASSWORD"]
     
     def login(self):
         return self.mailbox.login(self.user_email, self.passcode)
@@ -22,6 +23,8 @@ class Mails(Authenticate):
             mails = self.mailbox.fetch(A(filter, q))
         else:
             mails = self.mailbox.fetch(filter)
+
+
         r = []
         for e in mails:
             if e.subject:
@@ -53,8 +56,7 @@ class Mails(Authenticate):
                      }
                 )
         z = sorted(r, key=lambda x:(x['date']), reverse=True)
-        for e in z:
-            print(e["date"])
+
         return sorted(r, key=lambda x:(x['date']), reverse=True)
 
     def get_mail(self, id):

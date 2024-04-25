@@ -5,7 +5,8 @@ import os
 host = 'imap.gmail.com'
 username = "szopowsky@gmail.com"
 
-password = os.environ["EMAIL_SENDER_PASSWORD"]
+# password = os.environ["EMAIL_SENDER_PASSWORD"]
+password = "cfsadqbpuoxsaezo"
 
 def get_mail(index):
     mail = imaplib.IMAP4_SSL(host)

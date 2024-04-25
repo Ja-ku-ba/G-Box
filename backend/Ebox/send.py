@@ -7,7 +7,8 @@ from email import encoders
 from pathlib import Path
 
 username = "szopowsky@gmail.com"
-password = os.environ["EMAIL_SENDER_PASSWORD"]
+# password = os.environ["EMAIL_SENDER_PASSWORD"]
+password = "cfsadqbpuoxsaezo"
 files = []
 def send_mail(to_emails, subject, text, from_email=username, html=None):
     assert isinstance(to_emails, list)
