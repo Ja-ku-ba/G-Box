@@ -1,16 +1,12 @@
-import { useState } from "react";
-import Filters from "./Filters";
+import { useState } from "react"
+import Filters from "./Filters"
 
 const SearchBar = () => {
-  const [isShown, setIsShown] = useState(false);
+  const [isShown, setIsShown] = useState(false)
 
-  const handleClick = (event) => {
-    // 👇️ toggle shown state
-    setIsShown((current) => !current);
-
-    // 👇️ or simply set it to true
-    // setIsShown(true);
-  };
+  const handleClick = () => {
+    setIsShown((current) => !current)
+  }
 
   return (
     <div>
@@ -25,7 +21,7 @@ const SearchBar = () => {
       </div>
       <div className={"filter-container"}>{isShown && <Filters />}</div>
     </div>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

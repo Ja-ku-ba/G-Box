@@ -127,3 +127,27 @@ UNKEYWORD
 
 UNSEEN
 	Messages that do not have the \Seen flag set.
+
+
+Inbox: Messages that are new and unread.
+Starred: Messages that you've marked as important with a star.
+Snoozed: Messages that you've snoozed to deal with later.
+Important: Messages that Gmail's algorithms think are important to you.
+Unread: Messages that you haven't read yet.
+Read: Messages that you've already read.
+Drafts: Messages that you've started composing but haven't sent yet.
+Sent: Messages that you've sent to others.
+Spam: Messages that Gmail's algorithms think are spam.
+Trash: Messages that you've deleted.
+All Mail: All messages in your Gmail account, including archived messages.
+Categories: A set of labels that Gmail applies to your messages based on their content, such as:
+    Social: Messages from social media sites.
+    Promotions: Messages from companies you've subscribed to.
+    Updates: Messages from services you've signed up for.
+    Forums: Messages from online forums or discussion groups.
+
+
+https://developers.google.com/gmail/api/guides/labels?hl=pl
+
+print(dir(imap_tools.MailMessageFlags)), returns:
+'ANSWERED', 'DELETED', 'DRAFT', 'FLAGGED', 'RECENT', 'SEEN'
